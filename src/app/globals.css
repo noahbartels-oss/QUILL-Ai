@@ -60,13 +60,14 @@
 }
 
 @layer utilities {
+  /* Brand gradient: deep indigo → electric blue — distinct from generic "AI purple" */
   .gradient-text {
-    @apply bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-indigo-700 via-violet-600 to-blue-600 bg-clip-text text-transparent;
   }
 
   .gradient-border {
     background: linear-gradient(white, white) padding-box,
-      linear-gradient(to right, #7c3aed, #4f46e5) border-box;
+      linear-gradient(to right, #4338ca, #2563eb) border-box;
     border: 2px solid transparent;
   }
 

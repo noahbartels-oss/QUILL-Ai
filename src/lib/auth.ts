@@ -17,35 +17,43 @@ export function verifyPassword(password: string, hash: string): boolean {
 
 export { hashPassword };
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: PrismaAdapter(prisma),
-  session: { strategy: "jwt" },
-  pages: {
-    signIn: "/auth/login",
-    error: "/auth/error",
-  },
-  providers: [
+const providers = [];
+
+// Only register GitHub if credentials are set
+if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
+  providers.push(
     GitHub({
-      clientId: process.env.GITHUB_CLIENT_ID ?? "",
-      clientSecret: process.env.GITHUB_CLIENT_SECRET ?? "",
-    }),
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    })
+  );
+}
+
+// Only register Google if credentials are set
+if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
+  providers.push(
     Google({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
-    }),
-    Credentials({
-      name: "credentials",
-      credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
-      },
-      async authorize(credentials) {
-        const parsed = z
-          .object({ email: z.string().email(), password: z.string().min(6) })
-          .safeParse(credentials);
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    })
+  );
+}
 
-        if (!parsed.success) return null;
+providers.push(
+  Credentials({
+    name: "credentials",
+    credentials: {
+      email: { label: "Email", type: "email" },
+      password: { label: "Password", type: "password" },
+    },
+    async authorize(credentials) {
+      const parsed = z
+        .object({ email: z.string().email(), password: z.string().min(6) })
+        .safeParse(credentials);
 
+      if (!parsed.success) return null;
+
+      try {
         const user = await prisma.user.findUnique({
           where: { email: parsed.data.email },
         });
@@ -61,22 +69,39 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           name: user.name,
           image: user.image,
         };
-      },
-    }),
-  ],
+      } catch {
+        return null;
+      }
+    },
+  })
+);
+
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  adapter: PrismaAdapter(prisma),
+  trustHost: true,
+  session: { strategy: "jwt" },
+  pages: {
+    signIn: "/auth/login",
+    error: "/auth/error",
+  },
+  providers,
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
       }
       if (token.id) {
-        const dbUser = await prisma.user.findUnique({
-          where: { id: token.id as string },
-          select: { plan: true, locale: true },
-        });
-        if (dbUser) {
-          token.plan = dbUser.plan;
-          token.locale = dbUser.locale;
+        try {
+          const dbUser = await prisma.user.findUnique({
+            where: { id: token.id as string },
+            select: { plan: true, locale: true },
+          });
+          if (dbUser) {
+            token.plan = dbUser.plan;
+            token.locale = dbUser.locale;
+          }
+        } catch {
+          // DB unavailable — continue without plan info
         }
       }
       return token;
@@ -92,15 +117,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   events: {
     async createUser({ user }) {
-      // Initialize usage for new Trial users (5 lifetime generations)
-      await prisma.usage.create({
-        data: {
-          userId: user.id!,
-          generationsUsed: 0,
-          generationsMax: 5,
-          wordsGenerated: 0,
-        },
-      });
+      try {
+        await prisma.usage.create({
+          data: {
+            userId: user.id!,
+            generationsUsed: 0,
+            generationsMax: 5,
+            wordsGenerated: 0,
+          },
+        });
+      } catch {
+        // Usage record creation failed — non-fatal
+      }
     },
   },
 });

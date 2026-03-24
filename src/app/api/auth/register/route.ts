@@ -10,6 +10,13 @@ const registerSchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
+  if (!process.env.DATABASE_URL) {
+    return NextResponse.json(
+      { error: "Database not configured. Set DATABASE_URL in Vercel environment variables." },
+      { status: 503 }
+    );
+  }
+
   try {
     const body = await req.json();
     const parsed = registerSchema.safeParse(body);
@@ -23,10 +30,19 @@ export async function POST(req: NextRequest) {
 
     const { name, email, password } = parsed.data;
 
-    const existingUser = await prisma.user.findUnique({ where: { email } });
+    let existingUser;
+    try {
+      existingUser = await prisma.user.findUnique({ where: { email } });
+    } catch {
+      return NextResponse.json(
+        { error: "Cannot connect to database. Check your DATABASE_URL environment variable and run: npx prisma db push" },
+        { status: 503 }
+      );
+    }
+
     if (existingUser) {
       return NextResponse.json(
-        { error: "Email already in use" },
+        { error: "This email is already registered. Try signing in instead." },
         { status: 409 }
       );
     }
@@ -41,7 +57,7 @@ export async function POST(req: NextRequest) {
         usage: {
           create: {
             generationsUsed: 0,
-            generationsMax: 5, // Trial: 5 lifetime
+            generationsMax: 5,
             wordsGenerated: 0,
           },
         },
@@ -52,6 +68,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ user }, { status: 201 });
   } catch (error) {
     console.error("Registration error:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
   }
 }
