@@ -1,4 +1,3 @@
-import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 const locales = ["en", "de", "es", "fr"];
@@ -12,7 +11,17 @@ function detectLocale(req: NextRequest): string {
   return locales.includes(preferred) ? preferred : defaultLocale;
 }
 
-export default async function middleware(req: NextRequest) {
+// Check for session cookie without using next-auth/jwt (not Edge-compatible)
+function hasSession(req: NextRequest): boolean {
+  return !!(
+    req.cookies.get("__Secure-authjs.session-token") ||
+    req.cookies.get("authjs.session-token") ||
+    req.cookies.get("__Secure-next-auth.session-token") ||
+    req.cookies.get("next-auth.session-token")
+  );
+}
+
+export default function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Detect locale from URL
@@ -38,20 +47,18 @@ export default async function middleware(req: NextRequest) {
     pathnameWithoutLocale.startsWith(r)
   );
 
-  if (isProtected || isAuthRoute) {
-    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+  const loggedIn = hasSession(req);
 
-    if (isProtected && !token) {
-      return NextResponse.redirect(
-        new URL(`/${pathnameLocale}/auth/login`, req.url)
-      );
-    }
+  if (isProtected && !loggedIn) {
+    return NextResponse.redirect(
+      new URL(`/${pathnameLocale}/auth/login`, req.url)
+    );
+  }
 
-    if (isAuthRoute && token) {
-      return NextResponse.redirect(
-        new URL(`/${pathnameLocale}/dashboard`, req.url)
-      );
-    }
+  if (isAuthRoute && loggedIn) {
+    return NextResponse.redirect(
+      new URL(`/${pathnameLocale}/dashboard`, req.url)
+    );
   }
 
   // Pass locale to next-intl via header
