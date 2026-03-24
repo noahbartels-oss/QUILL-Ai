@@ -7,6 +7,19 @@ import { prisma } from "@/lib/prisma";
 import { z } from "zod";
 import bcrypt from "bcryptjs";
 
+// On Vercel, AUTH_URL/NEXTAUTH_URL might be set to http://localhost:3000 which
+// breaks cookie naming (__Host- vs plain), OAuth callback URLs, and session detection.
+// Use VERCEL_URL to auto-fix this at runtime.
+if (process.env.VERCEL && process.env.VERCEL_URL) {
+  const correctUrl = `https://${process.env.VERCEL_URL}`;
+  if (!process.env.AUTH_URL || process.env.AUTH_URL.includes("localhost")) {
+    process.env.AUTH_URL = correctUrl;
+  }
+  if (!process.env.NEXTAUTH_URL || process.env.NEXTAUTH_URL.includes("localhost")) {
+    process.env.NEXTAUTH_URL = correctUrl;
+  }
+}
+
 export async function hashPassword(password: string): Promise<string> {
   return bcrypt.hash(password, 12);
 }

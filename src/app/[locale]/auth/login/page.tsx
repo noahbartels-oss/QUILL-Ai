@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { loginAction } from "@/lib/actions/auth";
+import { loginAction, oauthSignInAction } from "@/lib/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -46,7 +46,7 @@ export default function LoginPage() {
 
   async function handleOAuth(provider: "github" | "google") {
     setOauthLoading(provider);
-    await signIn(provider, { callbackUrl: `/${locale}/dashboard` });
+    await oauthSignInAction(provider, `/${locale}/dashboard`);
   }
 
   return (
