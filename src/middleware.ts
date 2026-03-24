@@ -1,5 +1,5 @@
 import createMiddleware from "next-intl/middleware";
-import { auth } from "@/lib/auth";
+import { getToken } from "next-auth/jwt";
 import { routing } from "@/i18n/routing";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -22,14 +22,14 @@ export default async function middleware(req: NextRequest) {
   );
 
   if (isProtected || isAuthRoute) {
-    const session = await auth();
+    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
-    if (isProtected && !session) {
+    if (isProtected && !token) {
       const locale = pathname.split("/")[1] || "en";
       return NextResponse.redirect(new URL(`/${locale}/auth/login`, req.url));
     }
 
-    if (isAuthRoute && session) {
+    if (isAuthRoute && token) {
       const locale = pathname.split("/")[1] || "en";
       return NextResponse.redirect(new URL(`/${locale}/dashboard`, req.url));
     }
