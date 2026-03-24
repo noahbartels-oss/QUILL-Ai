@@ -5,17 +5,15 @@ import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
-import crypto from "crypto";
+import bcrypt from "bcryptjs";
 
-function hashPassword(password: string): string {
-  return crypto.createHash("sha256").update(password).digest("hex");
+export async function hashPassword(password: string): Promise<string> {
+  return bcrypt.hash(password, 12);
 }
 
-export function verifyPassword(password: string, hash: string): boolean {
-  return hashPassword(password) === hash;
+export async function verifyPassword(password: string, hash: string): Promise<boolean> {
+  return bcrypt.compare(password, hash);
 }
-
-export { hashPassword };
 
 const providers = [];
 
@@ -60,7 +58,7 @@ providers.push(
 
         if (!user || !user.password) return null;
 
-        const valid = verifyPassword(parsed.data.password, user.password);
+        const valid = await verifyPassword(parsed.data.password, user.password);
         if (!valid) return null;
 
         return {
