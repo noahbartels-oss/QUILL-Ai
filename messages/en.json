@@ -1,0 +1,302 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "login": "Log in",
+    "signup": "Start for free",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "badge": "Powered by Claude AI",
+    "headline": "Create brilliant content in seconds",
+    "subheadline": "QUILL AI is the all-in-one AI content platform for marketers, writers, and businesses. Generate blog posts, social media content, emails, and more — in any language.",
+    "cta_primary": "Start for free",
+    "cta_secondary": "See how it works",
+    "no_credit_card": "No credit card required",
+    "trusted_by": "Trusted by 10,000+ creators worldwide"
+  },
+  "features": {
+    "badge": "What QUILL AI can do",
+    "headline": "Everything you need to create amazing content",
+    "subheadline": "From blog posts to social media, emails to ad copy — QUILL AI handles all your content needs with the power of advanced AI.",
+    "items": {
+      "blog": {
+        "title": "Blog Posts",
+        "description": "Generate SEO-optimized, engaging blog posts that rank and convert readers into customers."
+      },
+      "social": {
+        "title": "Social Media",
+        "description": "Create viral social media content for Instagram, LinkedIn, Twitter, and more with perfect tone."
+      },
+      "email": {
+        "title": "Email Campaigns",
+        "description": "Write compelling email sequences that open, click, and convert at industry-leading rates."
+      },
+      "ads": {
+        "title": "Ad Copy",
+        "description": "Craft high-converting ad copy for Google, Facebook, Instagram, and LinkedIn campaigns."
+      },
+      "multilingual": {
+        "title": "Multilingual",
+        "description": "Generate content in 10+ languages to reach global audiences effortlessly."
+      },
+      "history": {
+        "title": "Content History",
+        "description": "Save, organize, and reuse your best content with full history and favorites."
+      }
+    }
+  },
+  "stats": {
+    "generations": "Content pieces generated",
+    "users": "Active users",
+    "languages": "Languages supported",
+    "satisfaction": "Customer satisfaction"
+  },
+  "pricing": {
+    "badge": "Simple, transparent pricing",
+    "headline": "Choose the plan that fits your needs",
+    "subheadline": "Start free, upgrade when you need more. No hidden fees, cancel anytime.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "save": "Save 25%",
+    "most_popular": "Most Popular",
+    "plans": {
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "period": "/month",
+        "description": "Perfect for getting started",
+        "cta": "Get started free",
+        "features": [
+          "10 AI generations per month",
+          "Up to 500 words per generation",
+          "4 content types",
+          "English only",
+          "Content history (7 days)"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$19.99",
+        "period": "/month",
+        "description": "For serious content creators",
+        "cta": "Start Pro",
+        "features": [
+          "200 AI generations per month",
+          "Up to 2,000 words per generation",
+          "All content types",
+          "10+ languages",
+          "Unlimited content history",
+          "Priority support",
+          "Export to PDF & Word"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "$79.99",
+        "period": "/month",
+        "description": "For teams and agencies",
+        "cta": "Contact sales",
+        "features": [
+          "Unlimited AI generations",
+          "Up to 5,000 words per generation",
+          "All content types",
+          "10+ languages",
+          "Unlimited content history",
+          "Dedicated support",
+          "Team collaboration",
+          "Custom AI training",
+          "API access"
+        ]
+      }
+    }
+  },
+  "testimonials": {
+    "badge": "Loved by creators",
+    "headline": "What our users say",
+    "items": [
+      {
+        "name": "Sarah Johnson",
+        "role": "Content Marketing Manager",
+        "company": "TechFlow Inc.",
+        "text": "QUILL AI has completely transformed how we produce content. We've cut our content creation time by 80% while maintaining quality."
+      },
+      {
+        "name": "Marcus Weber",
+        "role": "Freelance Copywriter",
+        "company": "Self-employed",
+        "text": "As a freelancer, QUILL AI lets me take on 3x more clients. The multilingual feature alone is worth every cent of the Pro plan."
+      },
+      {
+        "name": "Priya Sharma",
+        "role": "E-commerce Founder",
+        "company": "StyleHaven",
+        "text": "Our product descriptions and ad copy have never been better. QUILL AI understands exactly what we need and delivers every time."
+      }
+    ]
+  },
+  "cta_section": {
+    "headline": "Ready to create better content faster?",
+    "subheadline": "Join thousands of creators already using QUILL AI. Start for free today.",
+    "cta_primary": "Start for free — no credit card needed",
+    "cta_secondary": "See pricing plans"
+  },
+  "footer": {
+    "tagline": "AI-powered content creation for everyone.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "links": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "blog": "Blog",
+      "about": "About",
+      "careers": "Careers",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "copyright": "© 2026 QUILL AI. All rights reserved."
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your QUILL AI account",
+      "email_label": "Email address",
+      "password_label": "Password",
+      "submit": "Sign in",
+      "forgot_password": "Forgot password?",
+      "no_account": "Don't have an account?",
+      "signup_link": "Sign up for free",
+      "or": "Or continue with",
+      "github": "Continue with GitHub",
+      "google": "Continue with Google",
+      "error": "Invalid email or password"
+    },
+    "register": {
+      "title": "Create your account",
+      "subtitle": "Start creating AI-powered content today",
+      "name_label": "Full name",
+      "email_label": "Email address",
+      "password_label": "Password",
+      "password_hint": "Minimum 6 characters",
+      "submit": "Create account",
+      "have_account": "Already have an account?",
+      "login_link": "Sign in",
+      "or": "Or continue with",
+      "github": "Continue with GitHub",
+      "google": "Continue with Google",
+      "terms": "By creating an account, you agree to our Terms of Service and Privacy Policy.",
+      "success": "Account created! Please sign in."
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "generate": "Generate",
+      "history": "History",
+      "settings": "Settings",
+      "upgrade": "Upgrade to Pro"
+    },
+    "home": {
+      "greeting": "Good {time}, {name}!",
+      "subtitle": "What would you like to create today?",
+      "quick_actions": "Quick actions",
+      "recent_content": "Recent content",
+      "usage_title": "Monthly usage",
+      "usage_label": "{used} of {max} generations used",
+      "no_content": "No content generated yet. Start creating!",
+      "view_all": "View all"
+    },
+    "generate": {
+      "title": "Generate Content",
+      "subtitle": "Choose a content type and let AI do the work",
+      "content_type": "Content type",
+      "topic": "Topic / Subject",
+      "topic_placeholder": "e.g. 'Benefits of remote work for productivity'",
+      "tone": "Tone",
+      "language": "Output language",
+      "context": "Additional context (optional)",
+      "context_placeholder": "Add any extra details, keywords, or instructions...",
+      "generate_btn": "Generate content",
+      "generating": "Generating...",
+      "result_title": "Generated Content",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "save": "Save",
+      "saved": "Saved!",
+      "regenerate": "Regenerate",
+      "word_count": "{count} words",
+      "limit_reached": "You've reached your monthly limit. Upgrade to Pro for more generations.",
+      "upgrade_now": "Upgrade now",
+      "types": {
+        "BLOG_POST": "Blog Post",
+        "SOCIAL_MEDIA": "Social Media",
+        "EMAIL": "Email",
+        "AD_COPY": "Ad Copy",
+        "PRODUCT_DESCRIPTION": "Product Description",
+        "LANDING_PAGE": "Landing Page",
+        "CUSTOM": "Custom"
+      },
+      "tones": {
+        "professional": "Professional",
+        "casual": "Casual",
+        "friendly": "Friendly",
+        "formal": "Formal",
+        "humorous": "Humorous",
+        "inspirational": "Inspirational",
+        "persuasive": "Persuasive",
+        "informative": "Informative"
+      }
+    },
+    "history": {
+      "title": "Content History",
+      "subtitle": "All your generated content in one place",
+      "search_placeholder": "Search content...",
+      "filter_type": "Filter by type",
+      "all_types": "All types",
+      "empty": "No content found",
+      "empty_subtitle": "Generate your first piece of content to see it here.",
+      "delete": "Delete",
+      "favorite": "Favorite",
+      "unfavorite": "Unfavorite",
+      "copy": "Copy",
+      "view": "View",
+      "words": "{count} words",
+      "favorites_only": "Favorites only"
+    },
+    "settings": {
+      "title": "Account Settings",
+      "profile": "Profile",
+      "profile_name": "Full name",
+      "profile_email": "Email address",
+      "profile_save": "Save changes",
+      "subscription": "Subscription",
+      "current_plan": "Current plan",
+      "plan_free": "Free Plan",
+      "plan_pro": "Pro Plan",
+      "plan_enterprise": "Enterprise Plan",
+      "upgrade": "Upgrade plan",
+      "cancel": "Cancel subscription",
+      "billing_history": "Billing history",
+      "preferences": "Preferences",
+      "language_pref": "Interface language",
+      "danger_zone": "Danger zone",
+      "delete_account": "Delete account",
+      "delete_warning": "This action cannot be undone. All your data will be permanently deleted.",
+      "saved": "Settings saved successfully!"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "or": "or"
+  }
+}

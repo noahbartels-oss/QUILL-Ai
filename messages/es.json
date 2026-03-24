@@ -1,0 +1,302 @@
+{
+  "nav": {
+    "features": "Características",
+    "pricing": "Precios",
+    "login": "Iniciar sesión",
+    "signup": "Comenzar gratis",
+    "dashboard": "Panel"
+  },
+  "hero": {
+    "badge": "Powered by Claude AI",
+    "headline": "Crea contenido brillante en segundos",
+    "subheadline": "QUILL AI es la plataforma de contenido IA todo-en-uno para marketers, escritores y empresas. Genera publicaciones de blog, contenido para redes sociales, correos y más — en cualquier idioma.",
+    "cta_primary": "Comenzar gratis",
+    "cta_secondary": "Ver cómo funciona",
+    "no_credit_card": "No se requiere tarjeta de crédito",
+    "trusted_by": "Confiado por más de 10.000 creadores en todo el mundo"
+  },
+  "features": {
+    "badge": "Lo que QUILL AI puede hacer",
+    "headline": "Todo lo que necesitas para crear contenido increíble",
+    "subheadline": "Desde publicaciones de blog hasta redes sociales, correos hasta textos publicitarios — QUILL AI maneja todas tus necesidades de contenido.",
+    "items": {
+      "blog": {
+        "title": "Publicaciones de Blog",
+        "description": "Genera publicaciones de blog optimizadas para SEO que posicionan y convierten lectores en clientes."
+      },
+      "social": {
+        "title": "Redes Sociales",
+        "description": "Crea contenido viral para Instagram, LinkedIn, Twitter y más con el tono perfecto."
+      },
+      "email": {
+        "title": "Campañas de Email",
+        "description": "Escribe secuencias de email convincentes que se abren, se hacen clic y convierten."
+      },
+      "ads": {
+        "title": "Textos Publicitarios",
+        "description": "Crea textos publicitarios de alta conversión para Google, Facebook, Instagram y LinkedIn."
+      },
+      "multilingual": {
+        "title": "Multilingüe",
+        "description": "Genera contenido en más de 10 idiomas para llegar a audiencias globales sin esfuerzo."
+      },
+      "history": {
+        "title": "Historial de Contenido",
+        "description": "Guarda, organiza y reutiliza tu mejor contenido con historial completo y favoritos."
+      }
+    }
+  },
+  "stats": {
+    "generations": "Piezas de contenido generadas",
+    "users": "Usuarios activos",
+    "languages": "Idiomas soportados",
+    "satisfaction": "Satisfacción del cliente"
+  },
+  "pricing": {
+    "badge": "Precios simples y transparentes",
+    "headline": "Elige el plan que se adapte a tus necesidades",
+    "subheadline": "Comienza gratis, actualiza cuando necesites más. Sin cargos ocultos, cancela en cualquier momento.",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "save": "Ahorra 25%",
+    "most_popular": "Más Popular",
+    "plans": {
+      "free": {
+        "name": "Gratis",
+        "price": "$0",
+        "period": "/mes",
+        "description": "Perfecto para comenzar",
+        "cta": "Comenzar gratis",
+        "features": [
+          "10 generaciones de IA por mes",
+          "Hasta 500 palabras por generación",
+          "4 tipos de contenido",
+          "Solo inglés",
+          "Historial de contenido (7 días)"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$19.99",
+        "period": "/mes",
+        "description": "Para creadores de contenido serios",
+        "cta": "Comenzar Pro",
+        "features": [
+          "200 generaciones de IA por mes",
+          "Hasta 2.000 palabras por generación",
+          "Todos los tipos de contenido",
+          "10+ idiomas",
+          "Historial de contenido ilimitado",
+          "Soporte prioritario",
+          "Exportar a PDF y Word"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "$79.99",
+        "period": "/mes",
+        "description": "Para equipos y agencias",
+        "cta": "Contactar ventas",
+        "features": [
+          "Generaciones de IA ilimitadas",
+          "Hasta 5.000 palabras por generación",
+          "Todos los tipos de contenido",
+          "10+ idiomas",
+          "Historial de contenido ilimitado",
+          "Soporte dedicado",
+          "Colaboración en equipo",
+          "Entrenamiento de IA personalizado",
+          "Acceso a API"
+        ]
+      }
+    }
+  },
+  "testimonials": {
+    "badge": "Amado por los creadores",
+    "headline": "Lo que dicen nuestros usuarios",
+    "items": [
+      {
+        "name": "Sarah Johnson",
+        "role": "Gerente de Marketing de Contenido",
+        "company": "TechFlow Inc.",
+        "text": "QUILL AI ha transformado completamente cómo producimos contenido. Hemos reducido nuestro tiempo de creación de contenido en un 80% manteniendo la calidad."
+      },
+      {
+        "name": "Marcus Weber",
+        "role": "Redactor Freelance",
+        "company": "Autónomo",
+        "text": "Como freelancer, QUILL AI me permite aceptar 3 veces más clientes. La función multilingüe por sí sola vale cada centavo del plan Pro."
+      },
+      {
+        "name": "Priya Sharma",
+        "role": "Fundadora de E-commerce",
+        "company": "StyleHaven",
+        "text": "Nuestras descripciones de productos y textos publicitarios nunca han sido mejores. QUILL AI entiende exactamente lo que necesitamos y entrega siempre."
+      }
+    ]
+  },
+  "cta_section": {
+    "headline": "¿Listo para crear mejor contenido más rápido?",
+    "subheadline": "Únete a miles de creadores que ya usan QUILL AI. Comienza gratis hoy.",
+    "cta_primary": "Comenzar gratis — sin tarjeta de crédito",
+    "cta_secondary": "Ver planes de precios"
+  },
+  "footer": {
+    "tagline": "Creación de contenido con IA para todos.",
+    "product": "Producto",
+    "company": "Empresa",
+    "legal": "Legal",
+    "links": {
+      "features": "Características",
+      "pricing": "Precios",
+      "blog": "Blog",
+      "about": "Acerca de",
+      "careers": "Empleo",
+      "contact": "Contacto",
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Servicio"
+    },
+    "copyright": "© 2026 QUILL AI. Todos los derechos reservados."
+  },
+  "auth": {
+    "login": {
+      "title": "Bienvenido de vuelta",
+      "subtitle": "Inicia sesión en tu cuenta de QUILL AI",
+      "email_label": "Dirección de email",
+      "password_label": "Contraseña",
+      "submit": "Iniciar sesión",
+      "forgot_password": "¿Olvidaste tu contraseña?",
+      "no_account": "¿No tienes cuenta?",
+      "signup_link": "Regístrate gratis",
+      "or": "O continúa con",
+      "github": "Continuar con GitHub",
+      "google": "Continuar con Google",
+      "error": "Email o contraseña inválidos"
+    },
+    "register": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Comienza a crear contenido con IA hoy",
+      "name_label": "Nombre completo",
+      "email_label": "Dirección de email",
+      "password_label": "Contraseña",
+      "password_hint": "Mínimo 6 caracteres",
+      "submit": "Crear cuenta",
+      "have_account": "¿Ya tienes una cuenta?",
+      "login_link": "Iniciar sesión",
+      "or": "O continúa con",
+      "github": "Continuar con GitHub",
+      "google": "Continuar con Google",
+      "terms": "Al crear una cuenta, aceptas nuestros Términos de Servicio y Política de Privacidad.",
+      "success": "¡Cuenta creada! Por favor inicia sesión."
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "generate": "Generar",
+      "history": "Historial",
+      "settings": "Configuración",
+      "upgrade": "Actualizar a Pro"
+    },
+    "home": {
+      "greeting": "¡Buenos {time}, {name}!",
+      "subtitle": "¿Qué te gustaría crear hoy?",
+      "quick_actions": "Acciones rápidas",
+      "recent_content": "Contenido reciente",
+      "usage_title": "Uso mensual",
+      "usage_label": "{used} de {max} generaciones usadas",
+      "no_content": "Aún no hay contenido generado. ¡Comienza a crear!",
+      "view_all": "Ver todo"
+    },
+    "generate": {
+      "title": "Generar Contenido",
+      "subtitle": "Elige un tipo de contenido y deja que la IA haga el trabajo",
+      "content_type": "Tipo de contenido",
+      "topic": "Tema / Asunto",
+      "topic_placeholder": "ej. 'Beneficios del trabajo remoto para la productividad'",
+      "tone": "Tono",
+      "language": "Idioma de salida",
+      "context": "Contexto adicional (opcional)",
+      "context_placeholder": "Añade detalles adicionales, palabras clave o instrucciones...",
+      "generate_btn": "Generar contenido",
+      "generating": "Generando...",
+      "result_title": "Contenido Generado",
+      "copy": "Copiar",
+      "copied": "¡Copiado!",
+      "save": "Guardar",
+      "saved": "¡Guardado!",
+      "regenerate": "Regenerar",
+      "word_count": "{count} palabras",
+      "limit_reached": "Has alcanzado tu límite mensual. Actualiza a Pro para más generaciones.",
+      "upgrade_now": "Actualizar ahora",
+      "types": {
+        "BLOG_POST": "Publicación de Blog",
+        "SOCIAL_MEDIA": "Redes Sociales",
+        "EMAIL": "Email",
+        "AD_COPY": "Texto Publicitario",
+        "PRODUCT_DESCRIPTION": "Descripción de Producto",
+        "LANDING_PAGE": "Landing Page",
+        "CUSTOM": "Personalizado"
+      },
+      "tones": {
+        "professional": "Profesional",
+        "casual": "Casual",
+        "friendly": "Amigable",
+        "formal": "Formal",
+        "humorous": "Humorístico",
+        "inspirational": "Inspiracional",
+        "persuasive": "Persuasivo",
+        "informative": "Informativo"
+      }
+    },
+    "history": {
+      "title": "Historial de Contenido",
+      "subtitle": "Todo tu contenido generado en un solo lugar",
+      "search_placeholder": "Buscar contenido...",
+      "filter_type": "Filtrar por tipo",
+      "all_types": "Todos los tipos",
+      "empty": "No se encontró contenido",
+      "empty_subtitle": "Genera tu primera pieza de contenido para verla aquí.",
+      "delete": "Eliminar",
+      "favorite": "Favorito",
+      "unfavorite": "Quitar de favoritos",
+      "copy": "Copiar",
+      "view": "Ver",
+      "words": "{count} palabras",
+      "favorites_only": "Solo favoritos"
+    },
+    "settings": {
+      "title": "Configuración de Cuenta",
+      "profile": "Perfil",
+      "profile_name": "Nombre completo",
+      "profile_email": "Dirección de email",
+      "profile_save": "Guardar cambios",
+      "subscription": "Suscripción",
+      "current_plan": "Plan actual",
+      "plan_free": "Plan Gratuito",
+      "plan_pro": "Plan Pro",
+      "plan_enterprise": "Plan Enterprise",
+      "upgrade": "Actualizar plan",
+      "cancel": "Cancelar suscripción",
+      "billing_history": "Historial de facturación",
+      "preferences": "Preferencias",
+      "language_pref": "Idioma de interfaz",
+      "danger_zone": "Zona de peligro",
+      "delete_account": "Eliminar cuenta",
+      "delete_warning": "Esta acción no se puede deshacer. Todos tus datos serán eliminados permanentemente.",
+      "saved": "¡Configuración guardada exitosamente!"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "retry": "Intentar de nuevo",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "confirm": "Confirmar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "close": "Cerrar",
+    "or": "o"
+  }
+}
