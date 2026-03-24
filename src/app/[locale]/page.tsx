@@ -238,7 +238,7 @@ export default function LandingPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {(["free", "pro", "enterprise"] as const).map((plan) => {
+              {(["trial", "pro", "agency"] as const).map((plan) => {
                 const isPro = plan === "pro";
                 return (
                   <div
@@ -265,10 +265,10 @@ export default function LandingPage() {
                       </p>
                       <div className="flex items-baseline gap-1">
                         <span className="text-4xl font-extrabold">
-                          {t(`pricing.plans.${plan}.price`)}
+                          {t(`pricing.plans.${plan}.price_monthly`)}
                         </span>
                         <span className="text-muted-foreground text-sm">
-                          {t(`pricing.plans.${plan}.period`)}
+                          {t("pricing.per_month")}
                         </span>
                       </div>
                     </div>
@@ -290,13 +290,7 @@ export default function LandingPage() {
                       className="w-full"
                       size="lg"
                     >
-                      <Link
-                        href={
-                          plan === "enterprise"
-                            ? `/${locale}/contact`
-                            : `/${locale}/auth/register`
-                        }
-                      >
+                      <Link href={`/${locale}/auth/register`}>
                         {t(`pricing.plans.${plan}.cta`)}
                       </Link>
                     </Button>
