@@ -7,16 +7,33 @@
     "dashboard": "Dashboard"
   },
   "hero": {
-    "badge": "Powered by Claude AI",
+    "badge": "Now in beta — join 10,000+ creators",
     "headline": "Create brilliant content in seconds",
-    "subheadline": "QUILL AI is the all-in-one AI content platform for marketers, writers, and businesses. Generate blog posts, social media content, emails, and more — in any language.",
-    "cta_primary": "Try QUILL free",
+    "subheadline": "QUILL AI is the all-in-one content platform for marketers, writers, and businesses. Generate blog posts, social media content, emails, and more — in 10+ languages.",
+    "cta_primary": "Start for free",
     "cta_secondary": "See how it works",
     "no_credit_card": "5 free generations · No credit card required",
     "trusted_by": "Trusted by 10,000+ creators worldwide"
   },
+  "logos": {
+    "label": "Trusted by creators at",
+    "companies": ["Shopify Partners", "HubSpot Users", "Mailchimp", "Stripe Atlas", "Notion", "Figma"]
+  },
+  "how_it_works": {
+    "badge": "How It Works",
+    "headline": "Create polished content in 3 steps",
+    "step1_number": "01",
+    "step1_title": "Choose your content type",
+    "step1_desc": "Select from 7 formats: blog posts, social media, emails, ad copy, product descriptions, landing pages, or custom prompts.",
+    "step2_number": "02",
+    "step2_title": "Describe your topic",
+    "step2_desc": "Enter your topic, choose your preferred tone and output language. Done in under 30 seconds.",
+    "step3_number": "03",
+    "step3_title": "Get polished content instantly",
+    "step3_desc": "Receive high-quality, ready-to-publish content in seconds. Copy, save, or regenerate with one click."
+  },
   "features": {
-    "badge": "What QUILL AI can do",
+    "badge": "Platform Features",
     "headline": "Everything you need to create amazing content",
     "subheadline": "From blog posts to social media, emails to ad copy — QUILL AI handles all your content needs with the power of advanced AI.",
     "items": {
@@ -45,6 +62,21 @@
         "description": "Save, organize, and reuse your best content with full history and favorites."
       }
     }
+  },
+  "examples": {
+    "badge": "See It In Action",
+    "headline": "Real content, generated in seconds",
+    "subheadline": "Here's what QUILL AI produces — polished, ready-to-publish content tailored to your exact needs.",
+    "blog_label": "Blog Post",
+    "social_label": "Social Media",
+    "email_label": "Email",
+    "blog_title": "10 Productivity Hacks That Actually Work for Remote Teams",
+    "blog_excerpt": "In today's distributed work environment, remote teams face unique challenges. After analyzing 500+ high-performing remote companies, we've identified the strategies that consistently deliver measurable results — and the ones that don't...",
+    "social_text": "🚀 Remote work productivity just hit different when you have the right systems. Here's what 10,000+ distributed teams swear by → Thread below 👇 #RemoteWork #Productivity #WorkFromAnywhere",
+    "email_subject": "Subject: The 1 change that 3x'd our content output",
+    "email_body": "Hi Sarah, Last quarter our team struggled to publish more than 2 blog posts per week. This quarter? We're at 12. The difference wasn't hiring — it was one tool. Let me show you how...",
+    "words_label": "words",
+    "generated_label": "Generated in"
   },
   "stats": {
     "generations": "Content pieces generated",
@@ -151,25 +183,58 @@
         "name": "Sarah Johnson",
         "role": "Content Marketing Manager",
         "company": "TechFlow Inc.",
-        "text": "QUILL AI has completely transformed how we produce content. We've cut our content creation time by 80% while maintaining quality."
+        "text": "QUILL AI has completely transformed how we produce content. We've cut our content creation time by 80% while maintaining quality. It's become the backbone of our marketing stack.",
+        "avatar_color": "from-violet-500 to-purple-600"
       },
       {
         "name": "Marcus Weber",
         "role": "Freelance Copywriter",
         "company": "Self-employed",
-        "text": "As a freelancer, QUILL AI lets me take on 3x more clients. The multilingual feature alone is worth every cent of the Pro plan."
+        "text": "As a freelancer, QUILL AI lets me take on 3x more clients. The multilingual feature alone is worth every cent of the Pro plan. My German and English clients both love the output.",
+        "avatar_color": "from-blue-500 to-cyan-600"
       },
       {
         "name": "Priya Sharma",
         "role": "E-commerce Founder",
         "company": "StyleHaven",
-        "text": "Our product descriptions and ad copy have never been better. QUILL AI understands exactly what we need and delivers every time."
+        "text": "Our product descriptions and ad copy have never been better. QUILL AI understands exactly what we need and delivers every time. Revenue from organic traffic is up 40% this quarter.",
+        "avatar_color": "from-emerald-500 to-teal-600"
+      }
+    ]
+  },
+  "faq": {
+    "badge": "FAQ",
+    "headline": "Frequently asked questions",
+    "items": [
+      {
+        "q": "How does the free trial work?",
+        "a": "You get 5 AI generations completely free — no credit card required. Each generation produces a full piece of content. After 5 generations, you can upgrade to any paid plan starting at $9/month."
+      },
+      {
+        "q": "Can I cancel at any time?",
+        "a": "Yes. Cancel anytime from your account settings. You keep full access until the end of your current billing period. No cancellation fees, no questions asked."
+      },
+      {
+        "q": "Which languages are supported?",
+        "a": "QUILL AI supports 10+ languages including English, German, Spanish, French, Italian, Portuguese, Dutch, Polish, Japanese, and Chinese. Starter and above unlock all languages."
+      },
+      {
+        "q": "Is the generated content unique and original?",
+        "a": "Yes. Every piece is freshly generated for your specific topic and context — it's not recycled from a template. We recommend reviewing content before publishing for best results."
+      },
+      {
+        "q": "What counts as one generation?",
+        "a": "One click of the 'Generate' button counts as one generation, regardless of the length of the output. Copying, saving, or downloading your content is always free."
+      },
+      {
+        "q": "Is there a money-back guarantee?",
+        "a": "Absolutely. If you're not satisfied within 14 days of your first paid subscription, contact us and we'll issue a full refund — no questions asked."
       }
     ]
   },
   "cta_section": {
     "headline": "Ready to create better content faster?",
-    "subheadline": "Join thousands of creators already using QUILL AI. Start for free today.",
+    "subheadline": "Join thousands of creators already using QUILL AI. Start for free today — no credit card required.",
     "cta_primary": "Start for free — no credit card needed",
     "cta_secondary": "See pricing plans"
   },
@@ -335,5 +400,13 @@
     "next": "Next",
     "close": "Close",
     "or": "or"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "last_updated": "Last updated: March 2026"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "last_updated": "Last updated: March 2026"
   }
 }

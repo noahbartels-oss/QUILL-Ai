@@ -7,7 +7,7 @@
     "dashboard": "Panel"
   },
   "hero": {
-    "badge": "Powered by Claude AI",
+    "badge": "Ahora en beta — únete a 10.000+ creadores",
     "headline": "Crea contenido brillante en segundos",
     "subheadline": "QUILL AI es la plataforma de contenido IA todo-en-uno para marketers, escritores y empresas. Genera publicaciones de blog, contenido para redes sociales, correos y más — en cualquier idioma.",
     "cta_primary": "Probar QUILL gratis",
@@ -15,8 +15,40 @@
     "no_credit_card": "5 generaciones gratis · Sin tarjeta de crédito",
     "trusted_by": "Confiado por más de 10.000 creadores en todo el mundo"
   },
+  "logos": {
+    "label": "Utilizado por creadores en",
+    "companies": ["Shopify Partners", "HubSpot Users", "Mailchimp", "Stripe Atlas", "Notion", "Figma"]
+  },
+  "how_it_works": {
+    "badge": "Cómo funciona",
+    "headline": "Crea contenido en 3 simples pasos",
+    "step1_number": "01",
+    "step1_title": "Elige tu tipo de contenido",
+    "step1_desc": "Selecciona entre 7 formatos: artículos de blog, redes sociales, emails, textos publicitarios, descripciones de productos, páginas de destino o prompts personalizados.",
+    "step2_number": "02",
+    "step2_title": "Describe tu tema",
+    "step2_desc": "Ingresa tu tema, elige el tono y el idioma de salida. Listo en menos de 30 segundos.",
+    "step3_number": "03",
+    "step3_title": "Obtén contenido pulido al instante",
+    "step3_desc": "Recibe contenido de alta calidad listo para publicar en segundos. Copia, guarda o regenera con un clic."
+  },
+  "examples": {
+    "badge": "Vélo en acción",
+    "headline": "Contenido real, generado en segundos",
+    "subheadline": "Esto es lo que produce QUILL AI — contenido de alta calidad listo para publicar.",
+    "blog_label": "Artículo de Blog",
+    "social_label": "Redes Sociales",
+    "email_label": "Email",
+    "blog_title": "10 Hacks de Productividad para Equipos Remotos",
+    "blog_excerpt": "En el entorno de trabajo distribuido de hoy, los equipos remotos enfrentan desafíos únicos. Tras analizar 500+ empresas remotas de alto rendimiento, hemos identificado las estrategias que entregan resultados medibles...",
+    "social_text": "🚀 La productividad remota se siente diferente cuando tienes los sistemas correctos. Esto es lo que juran 10.000+ equipos distribuidos 👇 #RemoteWork #Productividad",
+    "email_subject": "Asunto: El 1 cambio que triplicó nuestro output de contenido",
+    "email_body": "Hola Sarah, el trimestre pasado nuestro equipo luchó para publicar más de 2 blogs por semana. ¿Este trimestre? Estamos en 12. La diferencia no fue contratar más gente...",
+    "words_label": "palabras",
+    "generated_label": "Generado en"
+  },
   "features": {
-    "badge": "Lo que QUILL AI puede hacer",
+    "badge": "Funciones de la plataforma",
     "headline": "Todo lo que necesitas para crear contenido increíble",
     "subheadline": "Desde publicaciones de blog hasta redes sociales, correos hasta textos publicitarios — QUILL AI maneja todas tus necesidades de contenido.",
     "items": {
@@ -157,7 +189,7 @@
         "name": "Marcus Weber",
         "role": "Redactor Freelance",
         "company": "Autónomo",
-        "text": "Como freelancer, QUILL AI me permite aceptar 3 veces más clientes. La función multilingüe por sí sola vale cada centavo del plan Pro."
+        "text": "Como freelancer, QUILL AI me permite aceptar 3 veces más clientes. La función multilingüe sola vale cada centavo del plan Pro.", "avatar_color": "from-blue-500 to-cyan-600"
       },
       {
         "name": "Priya Sharma",
@@ -323,6 +355,20 @@
       "saved": "¡Configuración guardada exitosamente!"
     }
   },
+  "faq": {
+    "badge": "FAQ",
+    "headline": "Preguntas frecuentes",
+    "items": [
+      {"q": "¿Cómo funciona la prueba gratuita?", "a": "Obtienes 5 generaciones de IA completamente gratis — sin tarjeta de crédito. Luego, actualiza a cualquier plan de pago desde /mes."},
+      {"q": "¿Puedo cancelar en cualquier momento?", "a": "Sí. Cancela cuando quieras desde la configuración de tu cuenta. Conservas el acceso hasta el final del período de facturación."},
+      {"q": "¿Qué idiomas son compatibles?", "a": "Más de 10 idiomas: inglés, alemán, español, francés, italiano, portugués, holandés, polaco, japonés y chino."},
+      {"q": "¿El contenido es único y original?", "a": "Sí. Cada pieza se genera de forma fresca para tu tema exacto. Recomendamos revisar antes de publicar."},
+      {"q": "¿Qué cuenta como una generación?", "a": "Un clic en 'Generar' cuenta como una generación, independientemente de la longitud del resultado."},
+      {"q": "¿Hay garantía de devolución?", "a": "Sí. Si no estás satisfecho en los primeros 14 días de tu primera suscripción de pago, te devolvemos el dinero completo."}
+    ]
+  },
+  "privacy": {"title": "Política de Privacidad", "last_updated": "Última actualización: marzo 2026"},
+  "terms": {"title": "Términos de Servicio", "last_updated": "Última actualización: marzo 2026"},
   "common": {
     "loading": "Cargando...",
     "error": "Algo salió mal",

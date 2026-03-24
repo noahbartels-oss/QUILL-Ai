@@ -7,7 +7,7 @@
     "dashboard": "Tableau de bord"
   },
   "hero": {
-    "badge": "Propulsé par Claude AI",
+    "badge": "Maintenant en bêta — rejoignez 10 000+ créateurs",
     "headline": "Créez du contenu brillant en quelques secondes",
     "subheadline": "QUILL AI est la plateforme de contenu IA tout-en-un pour les marketeurs, les écrivains et les entreprises. Générez des articles de blog, du contenu pour les réseaux sociaux, des emails et plus encore — dans n'importe quelle langue.",
     "cta_primary": "Essayer QUILL gratuitement",
@@ -15,8 +15,40 @@
     "no_credit_card": "5 générations gratuites · Sans carte de crédit",
     "trusted_by": "Approuvé par plus de 10 000 créateurs dans le monde"
   },
+  "logos": {
+    "label": "Utilisé par des créateurs chez",
+    "companies": ["Shopify Partners", "HubSpot Users", "Mailchimp", "Stripe Atlas", "Notion", "Figma"]
+  },
+  "how_it_works": {
+    "badge": "Comment ça marche",
+    "headline": "Créez du contenu en 3 étapes simples",
+    "step1_number": "01",
+    "step1_title": "Choisissez votre type de contenu",
+    "step1_desc": "Sélectionnez parmi 7 formats : articles de blog, réseaux sociaux, emails, textes publicitaires, descriptions de produits, pages d'atterrissage ou prompts personnalisés.",
+    "step2_number": "02",
+    "step2_title": "Décrivez votre sujet",
+    "step2_desc": "Entrez votre sujet, choisissez votre ton et la langue de sortie. Prêt en moins de 30 secondes.",
+    "step3_number": "03",
+    "step3_title": "Obtenez du contenu soigné instantanément",
+    "step3_desc": "Recevez du contenu de haute qualité prêt à publier en quelques secondes. Copiez, sauvegardez ou régénérez en un clic."
+  },
+  "examples": {
+    "badge": "Voir en action",
+    "headline": "Du vrai contenu, généré en secondes",
+    "subheadline": "Voici ce que produit QUILL AI — du contenu de haute qualité prêt à publier.",
+    "blog_label": "Article de Blog",
+    "social_label": "Réseaux Sociaux",
+    "email_label": "Email",
+    "blog_title": "10 Astuces de Productivité pour les Équipes à Distance",
+    "blog_excerpt": "Dans l'environnement de travail distribué d'aujourd'hui, les équipes distantes font face à des défis uniques. Après avoir analysé 500+ entreprises à distance performantes, nous avons identifié les stratégies qui livrent des résultats mesurables...",
+    "social_text": "🚀 La productivité à distance prend une autre dimension avec les bons systèmes. Voici ce que jurent 10 000+ équipes distribuées 👇 #TravailÀDistance #Productivité",
+    "email_subject": "Objet : Le 1 changement qui a triplé notre production de contenu",
+    "email_body": "Bonjour Sarah, le trimestre dernier notre équipe peinait à publier plus de 2 articles par semaine. Ce trimestre ? Nous en sommes à 12. La différence n'était pas le recrutement...",
+    "words_label": "mots",
+    "generated_label": "Généré en"
+  },
   "features": {
-    "badge": "Ce que QUILL AI peut faire",
+    "badge": "Fonctionnalités de la plateforme",
     "headline": "Tout ce dont vous avez besoin pour créer du contenu incroyable",
     "subheadline": "Des articles de blog aux réseaux sociaux, des emails aux textes publicitaires — QUILL AI gère tous vos besoins en contenu.",
     "items": {
@@ -323,6 +355,20 @@
       "saved": "Paramètres sauvegardés avec succès!"
     }
   },
+  "faq": {
+    "badge": "FAQ",
+    "headline": "Questions fréquemment posées",
+    "items": [
+      {"q": "Comment fonctionne l'essai gratuit ?", "a": "Vous obtenez 5 générations d'IA entièrement gratuites — sans carte de crédit. Ensuite, passez à un plan payant à partir de 9 $/mois."},
+      {"q": "Puis-je annuler à tout moment ?", "a": "Oui. Annulez à tout moment depuis les paramètres de votre compte. Vous conservez l'accès jusqu'à la fin de votre période de facturation."},
+      {"q": "Quelles langues sont prises en charge ?", "a": "Plus de 10 langues : anglais, allemand, espagnol, français, italien, portugais, néerlandais, polonais, japonais et chinois."},
+      {"q": "Le contenu est-il unique et original ?", "a": "Oui. Chaque contenu est fraîchement généré pour votre sujet exact. Nous recommandons de relire avant de publier."},
+      {"q": "Qu'est-ce qui compte comme une génération ?", "a": "Un clic sur 'Générer' compte comme une génération, quelle que soit la longueur du résultat."},
+      {"q": "Y a-t-il une garantie de remboursement ?", "a": "Absolument. Si vous n'êtes pas satisfait dans les 14 jours suivant votre premier abonnement payant, nous vous remboursons intégralement."}
+    ]
+  },
+  "privacy": {"title": "Politique de Confidentialité", "last_updated": "Dernière mise à jour : mars 2026"},
+  "terms": {"title": "Conditions d'Utilisation", "last_updated": "Dernière mise à jour : mars 2026"},
   "common": {
     "loading": "Chargement...",
     "error": "Quelque chose s'est mal passé",

@@ -7,7 +7,7 @@
     "dashboard": "Dashboard"
   },
   "hero": {
-    "badge": "Powered by Claude AI",
+    "badge": "Jetzt in Beta — 10.000+ Creators dabei",
     "headline": "Brillante Inhalte in Sekunden erstellen",
     "subheadline": "QUILL AI ist die All-in-One KI-Content-Plattform für Marketer, Autoren und Unternehmen. Erstellen Sie Blogbeiträge, Social-Media-Inhalte, E-Mails und mehr — in jeder Sprache.",
     "cta_primary": "QUILL kostenlos testen",
@@ -15,8 +15,40 @@
     "no_credit_card": "5 kostenlose Generierungen · Keine Kreditkarte erforderlich",
     "trusted_by": "Von über 10.000 Creators weltweit vertraut"
   },
+  "logos": {
+    "label": "Genutzt von Creators bei",
+    "companies": ["Shopify Partner", "HubSpot Nutzer", "Mailchimp", "Stripe Atlas", "Notion", "Figma"]
+  },
+  "how_it_works": {
+    "badge": "So funktioniert es",
+    "headline": "Erstelle Inhalte in 3 einfachen Schritten",
+    "step1_number": "01",
+    "step1_title": "Inhaltstyp wählen",
+    "step1_desc": "Wähle aus 7 Formaten: Blogbeiträge, Social Media, E-Mails, Werbetexte, Produktbeschreibungen, Landing Pages oder eigene Prompts.",
+    "step2_number": "02",
+    "step2_title": "Thema beschreiben",
+    "step2_desc": "Gib dein Thema ein, wähle Ton und Ausgabesprache. Fertig in unter 30 Sekunden.",
+    "step3_number": "03",
+    "step3_title": "Inhalte sofort erhalten",
+    "step3_desc": "Hochwertigen, veröffentlichungsreifen Content in Sekunden. Kopieren, speichern oder neu generieren mit einem Klick."
+  },
+  "examples": {
+    "badge": "In Aktion sehen",
+    "headline": "Echte Inhalte, in Sekunden generiert",
+    "subheadline": "Das produziert QUILL AI — hochwertiger, veröffentlichungsreifer Content.",
+    "blog_label": "Blogbeitrag",
+    "social_label": "Social Media",
+    "email_label": "E-Mail",
+    "blog_title": "10 Produktivitäts-Hacks für Remote-Teams",
+    "blog_excerpt": "In der heutigen verteilten Arbeitsumgebung stehen Remote-Teams vor einzigartigen Herausforderungen. Nach der Analyse von 500+ leistungsstarken Remote-Unternehmen haben wir die Strategien identifiziert, die konsistent messbare Ergebnisse liefern...",
+    "social_text": "🚀 Remote-Produktivität trifft anders, wenn man die richtigen Systeme hat. Das schwören 10.000+ verteilte Teams — Thread unten 👇 #RemoteWork #Produktivität",
+    "email_subject": "Betreff: Die 1 Änderung, die unseren Content-Output verdreifacht hat",
+    "email_body": "Hallo Sarah, letztes Quartal kämpfte unser Team, mehr als 2 Blogbeiträge pro Woche zu veröffentlichen. Dieses Quartal? Wir sind bei 12. Der Unterschied war kein Hiring...",
+    "words_label": "Wörter",
+    "generated_label": "Generiert in"
+  },
   "features": {
-    "badge": "Was QUILL AI kann",
+    "badge": "Plattform-Funktionen",
     "headline": "Alles, was Sie für großartige Inhalte benötigen",
     "subheadline": "Von Blogbeiträgen bis Social Media, E-Mails bis Werbetexte — QUILL AI übernimmt all Ihre Content-Anforderungen mit der Kraft fortschrittlicher KI.",
     "items": {
@@ -151,19 +183,52 @@
         "name": "Sarah Johnson",
         "role": "Content Marketing Managerin",
         "company": "TechFlow Inc.",
-        "text": "QUILL AI hat unsere Content-Produktion komplett verändert. Wir haben unsere Content-Erstellungszeit um 80% reduziert und dabei die Qualität beibehalten."
+        "text": "QUILL AI hat unsere Content-Produktion komplett verändert. Wir haben unsere Content-Erstellungszeit um 80% reduziert und dabei die Qualität beibehalten. Es ist das Rückgrat unseres Marketing-Stacks geworden.",
+        "avatar_color": "from-violet-500 to-purple-600"
       },
       {
         "name": "Marcus Weber",
         "role": "Freiberuflicher Texter",
         "company": "Selbstständig",
-        "text": "Als Freiberufler kann ich mit QUILL AI 3x mehr Kunden annehmen. Die Mehrsprachigkeitsfunktion allein ist jeden Cent des Pro-Plans wert."
+        "text": "Als Freiberufler kann ich mit QUILL AI 3x mehr Kunden annehmen. Die Mehrsprachigkeitsfunktion allein ist jeden Cent des Pro-Plans wert. Meine deutschen und englischen Kunden lieben beide die Ergebnisse.",
+        "avatar_color": "from-blue-500 to-cyan-600"
       },
       {
         "name": "Priya Sharma",
         "role": "E-Commerce-Gründerin",
         "company": "StyleHaven",
-        "text": "Unsere Produktbeschreibungen und Werbetexte waren noch nie besser. QUILL AI versteht genau, was wir brauchen und liefert jedes Mal."
+        "text": "Unsere Produktbeschreibungen und Werbetexte waren noch nie besser. QUILL AI versteht genau, was wir brauchen und liefert jedes Mal. Der organische Traffic ist dieses Quartal um 40% gestiegen.",
+        "avatar_color": "from-emerald-500 to-teal-600"
+      }
+    ]
+  },
+  "faq": {
+    "badge": "FAQ",
+    "headline": "Häufig gestellte Fragen",
+    "items": [
+      {
+        "q": "Wie funktioniert die kostenlose Testversion?",
+        "a": "Du erhältst 5 KI-Generierungen völlig kostenlos — ohne Kreditkarte. Danach kannst du auf einen Bezahlplan ab €9/Monat upgraden."
+      },
+      {
+        "q": "Kann ich jederzeit kündigen?",
+        "a": "Ja. Kündige jederzeit in deinen Kontoeinstellungen. Du behältst den Zugang bis zum Ende deines Abrechnungszeitraums. Keine versteckten Gebühren."
+      },
+      {
+        "q": "Welche Sprachen werden unterstützt?",
+        "a": "10+ Sprachen: Englisch, Deutsch, Spanisch, Französisch, Italienisch, Portugiesisch, Niederländisch, Polnisch, Japanisch und Chinesisch. Starter und höher schalten alle Sprachen frei."
+      },
+      {
+        "q": "Ist der Inhalt einzigartig und original?",
+        "a": "Ja. Jeder Inhalt wird frisch für dein genaues Thema generiert — keine recycelten Vorlagen. Wir empfehlen eine Überprüfung vor der Veröffentlichung."
+      },
+      {
+        "q": "Was zählt als eine Generierung?",
+        "a": "Ein Klick auf 'Generieren' zählt als eine Generierung, unabhängig von der Ausgabelänge. Kopieren und Speichern ist immer kostenlos."
+      },
+      {
+        "q": "Gibt es eine Geld-zurück-Garantie?",
+        "a": "Absolut. Falls du innerhalb von 14 Tagen nach dem ersten Bezahlabo nicht zufrieden bist, erstatten wir den vollen Betrag — keine Fragen."
       }
     ]
   },
@@ -322,6 +387,14 @@
       "delete_warning": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Ihre Daten werden dauerhaft gelöscht.",
       "saved": "Einstellungen erfolgreich gespeichert!"
     }
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "last_updated": "Zuletzt aktualisiert: März 2026"
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "last_updated": "Zuletzt aktualisiert: März 2026"
   },
   "common": {
     "loading": "Laden...",
