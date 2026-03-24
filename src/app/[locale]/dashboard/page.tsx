@@ -140,7 +140,7 @@ export default async function DashboardPage({
             </div>
           ) : (
             <div className="space-y-3">
-              {recentContents.map((content) => (
+              {recentContents.map((content: (typeof recentContents)[number]) => (
                 <div
                   key={content.id}
                   className="flex items-start gap-3 p-4 rounded-xl border bg-card hover:bg-muted/30 transition-colors"
