@@ -10,9 +10,9 @@
     "badge": "Powered by Claude AI",
     "headline": "Create brilliant content in seconds",
     "subheadline": "QUILL AI is the all-in-one AI content platform for marketers, writers, and businesses. Generate blog posts, social media content, emails, and more — in any language.",
-    "cta_primary": "Start for free",
+    "cta_primary": "Try QUILL free",
     "cta_secondary": "See how it works",
-    "no_credit_card": "No credit card required",
+    "no_credit_card": "5 free generations · No credit card required",
     "trusted_by": "Trusted by 10,000+ creators worldwide"
   },
   "features": {
@@ -54,62 +54,94 @@
   },
   "pricing": {
     "badge": "Simple, transparent pricing",
-    "headline": "Choose the plan that fits your needs",
-    "subheadline": "Start free, upgrade when you need more. No hidden fees, cancel anytime.",
+    "headline": "Plans that grow with you",
+    "subheadline": "Start with 5 free generations — no credit card needed. Upgrade for $9/mo and unlock serious content power.",
     "monthly": "Monthly",
     "yearly": "Yearly",
-    "save": "Save 25%",
+    "save_starter": "Save $29",
+    "save_pro": "Save $99",
+    "save_agency": "Save $319",
     "most_popular": "Most Popular",
+    "best_value": "Best Value",
+    "per_month": "/mo",
+    "per_year": "/yr",
+    "billed_yearly": "billed yearly",
+    "or": "or",
     "plans": {
-      "free": {
-        "name": "Free",
-        "price": "$0",
-        "period": "/month",
-        "description": "Perfect for getting started",
-        "cta": "Get started free",
+      "trial": {
+        "name": "Trial",
+        "price_monthly": "$0",
+        "price_yearly": "$0",
+        "description": "Try QUILL AI — no commitment",
+        "cta": "Start free",
+        "badge": "",
         "features": [
-          "10 AI generations per month",
-          "Up to 500 words per generation",
-          "4 content types",
+          "5 AI generations (lifetime)",
+          "Up to 300 words per generation",
+          "3 content types",
           "English only",
-          "Content history (7 days)"
-        ]
+          "Content history (3 days)"
+        ],
+        "limit_note": "5 total, then upgrade"
+      },
+      "starter": {
+        "name": "Starter",
+        "price_monthly": "$9",
+        "price_yearly": "$79",
+        "description": "For bloggers and side projects",
+        "cta": "Get Starter",
+        "badge": "",
+        "features": [
+          "60 AI generations per month",
+          "Up to 1,000 words per generation",
+          "5 content types",
+          "6 languages",
+          "Content history (30 days)",
+          "Email support"
+        ],
+        "limit_note": "60/month"
       },
       "pro": {
         "name": "Pro",
-        "price": "$19.99",
-        "period": "/month",
-        "description": "For serious content creators",
-        "cta": "Start Pro",
+        "price_monthly": "$29",
+        "price_yearly": "$249",
+        "description": "For marketers and creators",
+        "cta": "Get Pro",
+        "badge": "Most Popular",
         "features": [
-          "200 AI generations per month",
-          "Up to 2,000 words per generation",
-          "All content types",
+          "500 AI generations per month",
+          "Up to 3,000 words per generation",
+          "All 7 content types",
           "10+ languages",
           "Unlimited content history",
           "Priority support",
-          "Export to PDF & Word"
-        ]
+          "Advanced tone control"
+        ],
+        "limit_note": "500/month"
       },
-      "enterprise": {
-        "name": "Enterprise",
-        "price": "$79.99",
-        "period": "/month",
+      "agency": {
+        "name": "Agency",
+        "price_monthly": "$89",
+        "price_yearly": "$749",
         "description": "For teams and agencies",
-        "cta": "Contact sales",
+        "cta": "Get Agency",
+        "badge": "Best Value",
         "features": [
           "Unlimited AI generations",
-          "Up to 5,000 words per generation",
-          "All content types",
+          "Up to 6,000 words per generation",
+          "All 7 content types",
           "10+ languages",
           "Unlimited content history",
           "Dedicated support",
-          "Team collaboration",
-          "Custom AI training",
+          "3 team seats included",
+          "Custom brand voice",
           "API access"
-        ]
+        ],
+        "limit_note": "Unlimited"
       }
-    }
+    },
+    "guarantee": "14-day money-back guarantee · Cancel anytime · No hidden fees",
+    "faq_link": "Have questions? See FAQ"
   },
   "testimonials": {
     "badge": "Loved by creators",
@@ -226,8 +258,10 @@
       "saved": "Saved!",
       "regenerate": "Regenerate",
       "word_count": "{count} words",
-      "limit_reached": "You've reached your monthly limit. Upgrade to Pro for more generations.",
-      "upgrade_now": "Upgrade now",
+      "trial_remaining": "{count} free generation(s) left",
+      "limit_reached_trial": "You've used all 5 trial generations. Upgrade to Starter ($9/mo) to keep going.",
+      "limit_reached_paid": "You've reached your monthly limit. Upgrade for more generations.",
+      "upgrade_now": "Upgrade now — from $9/mo",
       "types": {
         "BLOG_POST": "Blog Post",
         "SOCIAL_MEDIA": "Social Media",
@@ -272,10 +306,13 @@
       "profile_save": "Save changes",
       "subscription": "Subscription",
       "current_plan": "Current plan",
-      "plan_free": "Free Plan",
+      "plan_trial": "Trial",
+      "plan_starter": "Starter Plan",
       "plan_pro": "Pro Plan",
-      "plan_enterprise": "Enterprise Plan",
+      "plan_agency": "Agency Plan",
       "upgrade": "Upgrade plan",
+      "upgrade_from_trial": "You're on Trial — upgrade to keep creating",
+      "trial_remaining": "{count} generation(s) remaining in your trial",
       "cancel": "Cancel subscription",
       "billing_history": "Billing history",
       "preferences": "Preferences",

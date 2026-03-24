@@ -92,12 +92,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   events: {
     async createUser({ user }) {
-      // Initialize usage for new users
+      // Initialize usage for new Trial users (5 lifetime generations)
       await prisma.usage.create({
         data: {
           userId: user.id!,
           generationsUsed: 0,
-          generationsMax: 10,
+          generationsMax: 5,
           wordsGenerated: 0,
         },
       });

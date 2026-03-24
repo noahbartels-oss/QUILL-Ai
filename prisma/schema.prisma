@@ -8,9 +8,10 @@ datasource db {
 }
 
 enum Plan {
-  FREE
+  TRIAL
+  STARTER
   PRO
-  ENTERPRISE
+  AGENCY
 }
 
 enum ContentType {
@@ -30,7 +31,7 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
-  plan          Plan      @default(FREE)
+  plan          Plan      @default(TRIAL)
   locale        String    @default("en")
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
@@ -108,7 +109,7 @@ model Subscription {
   userId               String    @unique
   paypalSubscriptionId String?   @unique
   paypalOrderId        String?
-  plan                 Plan      @default(FREE)
+  plan                 Plan      @default(TRIAL)
   status               String    @default("active")
   currentPeriodStart   DateTime?
   currentPeriodEnd     DateTime?

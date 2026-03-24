@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
         usage: {
           create: {
             generationsUsed: 0,
-            generationsMax: 10,
+            generationsMax: 5, // Trial: 5 lifetime
             wordsGenerated: 0,
           },
         },

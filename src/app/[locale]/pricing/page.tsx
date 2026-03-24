@@ -9,23 +9,48 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Check, Crown, Zap, Building2, X, Loader2 } from "lucide-react";
+import { Check, Crown, Zap, Building2, Sparkles, X, Shield } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
-interface Plan {
-  id: string;
-  name: string;
-  price: string;
-  yearlyPrice: string;
-  period: string;
-  description: string;
-  cta: string;
-  features: string[];
-  featured?: boolean;
-  paypalPlanId: string;
-  yearlyPaypalPlanId: string;
-  icon: React.ElementType;
-}
+const PLANS = [
+  {
+    key: "trial",
+    paypalMonthly: null,
+    paypalYearly: null,
+    icon: Zap,
+    highlight: false,
+    iconBg: "bg-muted",
+    iconColor: "text-muted-foreground",
+  },
+  {
+    key: "starter",
+    paypalMonthly: "STARTER_MONTHLY",
+    paypalYearly: "STARTER_YEARLY",
+    icon: Sparkles,
+    highlight: false,
+    iconBg: "bg-blue-100",
+    iconColor: "text-blue-600",
+  },
+  {
+    key: "pro",
+    paypalMonthly: "PRO_MONTHLY",
+    paypalYearly: "PRO_YEARLY",
+    icon: Crown,
+    highlight: true,
+    iconBg: "bg-gradient-to-br from-violet-600 to-indigo-600",
+    iconColor: "text-white",
+  },
+  {
+    key: "agency",
+    paypalMonthly: "AGENCY_MONTHLY",
+    paypalYearly: "AGENCY_YEARLY",
+    icon: Building2,
+    highlight: false,
+    iconBg: "bg-amber-100",
+    iconColor: "text-amber-600",
+  },
+];
 
 export default function PricingPage() {
   const t = useTranslations("pricing");
@@ -33,53 +58,16 @@ export default function PricingPage() {
   const { data: session } = useSession();
   const router = useRouter();
 
-  const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+  // Default to yearly to anchor on better value
+  const [billing, setBilling] = useState<"monthly" | "yearly">("yearly");
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
-  const [paymentLoading, setPaymentLoading] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
-  const plans: Plan[] = [
-    {
-      id: "free",
-      name: t("plans.free.name"),
-      price: "$0",
-      yearlyPrice: "$0",
-      period: t("plans.free.period"),
-      description: t("plans.free.description"),
-      cta: t("plans.free.cta"),
-      features: t.raw("plans.free.features") as string[],
-      paypalPlanId: "",
-      yearlyPaypalPlanId: "",
-      icon: Zap,
-    },
-    {
-      id: "pro",
-      name: t("plans.pro.name"),
-      price: "$19.99",
-      yearlyPrice: "$179.99",
-      period: t("plans.pro.period"),
-      description: t("plans.pro.description"),
-      cta: t("plans.pro.cta"),
-      features: t.raw("plans.pro.features") as string[],
-      featured: true,
-      paypalPlanId: "PRO_MONTHLY",
-      yearlyPaypalPlanId: "PRO_YEARLY",
-      icon: Crown,
-    },
-    {
-      id: "enterprise",
-      name: t("plans.enterprise.name"),
-      price: "$79.99",
-      yearlyPrice: "$719.99",
-      period: t("plans.enterprise.period"),
-      description: t("plans.enterprise.description"),
-      cta: t("plans.enterprise.cta"),
-      features: t.raw("plans.enterprise.features") as string[],
-      paypalPlanId: "ENTERPRISE_MONTHLY",
-      yearlyPaypalPlanId: "ENTERPRISE_YEARLY",
-      icon: Building2,
-    },
-  ];
+  const saveLabels: Record<string, string> = {
+    starter: t("save_starter"),
+    pro: t("save_pro"),
+    agency: t("save_agency"),
+  };
 
   async function createOrder(planId: string) {
     const res = await fetch("/api/paypal/create-order", {
@@ -92,20 +80,15 @@ export default function PricingPage() {
   }
 
   async function onApprove(planId: string, data: { orderID: string }) {
-    setPaymentLoading(true);
-    try {
-      const res = await fetch("/api/paypal/capture-order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ orderId: data.orderID, planId }),
-      });
-      const result = await res.json();
-      if (result.success) {
-        setPaymentSuccess(true);
-        setTimeout(() => router.push(`/${locale}/dashboard`), 2000);
-      }
-    } finally {
-      setPaymentLoading(false);
+    const res = await fetch("/api/paypal/capture-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ orderId: data.orderID, planId }),
+    });
+    const result = await res.json();
+    if (result.success) {
+      setPaymentSuccess(true);
+      setTimeout(() => router.push(`/${locale}/dashboard`), 2000);
     }
   }
 
@@ -113,188 +96,159 @@ export default function PricingPage() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <main className="flex-1 py-24">
-        <div className="container">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">
-              {t("badge")}
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-              {t("headline")}
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t("subheadline")}
-            </p>
+      <main className="flex-1 py-20 md:py-28">
+        <div className="container max-w-6xl">
 
-            {/* Billing Toggle */}
+          {/* Header */}
+          <div className="text-center mb-12">
+            <Badge variant="outline" className="mb-4">{t("badge")}</Badge>
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4">{t("headline")}</h1>
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto">{t("subheadline")}</p>
+
+            {/* Billing toggle — default yearly */}
             <div className="flex items-center justify-center gap-3 mt-8">
-              <span
-                className={`text-sm font-medium ${billing === "monthly" ? "text-foreground" : "text-muted-foreground"}`}
-              >
+              <span className={cn("text-sm font-medium", billing === "monthly" ? "text-foreground" : "text-muted-foreground")}>
                 {t("monthly")}
               </span>
               <button
-                onClick={() =>
-                  setBilling((b) => (b === "monthly" ? "yearly" : "monthly"))
-                }
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                onClick={() => setBilling(b => b === "monthly" ? "yearly" : "monthly")}
+                className={cn(
+                  "relative inline-flex h-6 w-11 items-center rounded-full transition-colors",
                   billing === "yearly" ? "bg-violet-600" : "bg-muted"
-                }`}
+                )}
               >
-                <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform shadow-sm ${
-                    billing === "yearly" ? "translate-x-6" : "translate-x-1"
-                  }`}
-                />
+                <span className={cn(
+                  "inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform",
+                  billing === "yearly" ? "translate-x-6" : "translate-x-1"
+                )} />
               </button>
-              <span
-                className={`text-sm font-medium flex items-center gap-1.5 ${billing === "yearly" ? "text-foreground" : "text-muted-foreground"}`}
-              >
+              <span className={cn("text-sm font-medium flex items-center gap-1.5", billing === "yearly" ? "text-foreground" : "text-muted-foreground")}>
                 {t("yearly")}
-                <Badge variant="gradient" className="text-xs py-0">
-                  {t("save")}
+                <Badge variant="gradient" className="text-xs py-0 px-2">
+                  {t("save_pro")} {/* generic save badge */}
                 </Badge>
               </span>
             </div>
           </div>
 
-          {/* Payment Success */}
           {paymentSuccess && (
-            <div className="max-w-md mx-auto mb-8 p-4 rounded-xl bg-green-50 border border-green-200 text-center">
-              <div className="text-green-600 font-semibold">
-                Payment successful! Redirecting to dashboard...
-              </div>
+            <div className="max-w-md mx-auto mb-8 p-4 rounded-xl bg-green-50 border border-green-200 text-center text-green-700 font-medium">
+              Payment successful! Redirecting to dashboard…
             </div>
           )}
 
-          {/* Plans */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {plans.map((plan) => {
+          {/* Plans grid */}
+          <div className="grid md:grid-cols-4 gap-5">
+            {PLANS.map((plan) => {
               const Icon = plan.icon;
-              const price = billing === "monthly" ? plan.price : plan.yearlyPrice;
-              const paypalId =
-                billing === "monthly"
-                  ? plan.paypalPlanId
-                  : plan.yearlyPaypalPlanId;
+              const planKey = plan.key as "trial" | "starter" | "pro" | "agency";
+              const price = billing === "monthly"
+                ? t(`plans.${planKey}.price_monthly`)
+                : t(`plans.${planKey}.price_yearly`);
+              const period = billing === "monthly" ? t("per_month") : t("per_year");
+              const features = t.raw(`plans.${planKey}.features`) as string[];
+              const planBadge = t(`plans.${planKey}.badge`);
+              const paypalId = billing === "monthly" ? plan.paypalMonthly : plan.paypalYearly;
+              const isFree = planKey === "trial";
+              const saveLabel = billing === "yearly" && !isFree ? saveLabels[planKey] : null;
 
               return (
                 <div
-                  key={plan.id}
-                  className={`relative rounded-2xl border bg-card p-8 flex flex-col ${
-                    plan.featured
-                      ? "border-violet-300 shadow-xl shadow-violet-500/10 md:scale-105"
-                      : ""
-                  }`}
+                  key={planKey}
+                  className={cn(
+                    "relative rounded-2xl border bg-card p-6 flex flex-col",
+                    plan.highlight
+                      ? "border-violet-300 shadow-2xl shadow-violet-500/10 ring-1 ring-violet-300"
+                      : "hover:border-muted-foreground/30 transition-colors"
+                  )}
                 >
-                  {plan.featured && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                      <Badge variant="gradient" className="px-4 py-1">
-                        {t("most_popular")}
+                  {/* Badge */}
+                  {planBadge && (
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                      <Badge variant="gradient" className="px-3 py-0.5 text-xs whitespace-nowrap">
+                        {planBadge}
                       </Badge>
                     </div>
                   )}
 
-                  <div className="mb-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div
-                        className={`h-8 w-8 rounded-lg flex items-center justify-center ${
-                          plan.featured
-                            ? "bg-gradient-to-br from-violet-600 to-indigo-600"
-                            : "bg-muted"
-                        }`}
-                      >
-                        <Icon
-                          className={`h-4 w-4 ${plan.featured ? "text-white" : "text-muted-foreground"}`}
-                        />
-                      </div>
-                      <h2 className="text-xl font-bold">{plan.name}</h2>
+                  {/* Header */}
+                  <div className="mb-5">
+                    <div className={cn("inline-flex h-9 w-9 items-center justify-center rounded-xl mb-3", plan.iconBg)}>
+                      <Icon className={cn("h-4.5 w-4.5", plan.iconColor)} style={{ width: 18, height: 18 }} />
                     </div>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {plan.description}
-                    </p>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-extrabold">{price}</span>
-                      <span className="text-muted-foreground text-sm">
-                        {billing === "yearly" ? "/year" : plan.period}
-                      </span>
+                    <h2 className="text-lg font-bold">{t(`plans.${planKey}.name`)}</h2>
+                    <p className="text-xs text-muted-foreground mt-0.5">{t(`plans.${planKey}.description`)}</p>
+
+                    <div className="flex items-baseline gap-1 mt-3">
+                      <span className="text-3xl font-extrabold">{price}</span>
+                      <span className="text-sm text-muted-foreground">{period}</span>
                     </div>
-                    {billing === "yearly" && plan.id !== "free" && (
-                      <p className="text-xs text-green-600 font-medium mt-1">
-                        Save {plan.id === "pro" ? "$59.89" : "$239.89"} per year
+
+                    {saveLabel && (
+                      <p className="text-xs text-green-600 font-semibold mt-0.5">
+                        {saveLabel} {t("billed_yearly")}
+                      </p>
+                    )}
+
+                    {billing === "monthly" && !isFree && (
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        {t("or")}{" "}
+                        <button onClick={() => setBilling("yearly")} className="text-violet-600 underline font-medium">
+                          {saveLabels[planKey]}
+                        </button>
+                        {" "}{t("billed_yearly")}
                       </p>
                     )}
                   </div>
 
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-sm">
-                        <Check className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                        <span>{feature}</span>
+                  {/* Features */}
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {features.map((f, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm">
+                        <Check className="h-3.5 w-3.5 text-green-500 mt-0.5 shrink-0" />
+                        <span className={planKey === "trial" ? "text-muted-foreground" : ""}>{f}</span>
                       </li>
                     ))}
                   </ul>
 
-                  {/* Payment/CTA */}
-                  {plan.id === "free" ? (
-                    <Button
-                      asChild
-                      variant={session ? "outline" : "gradient"}
-                      className="w-full"
-                      size="lg"
-                    >
+                  {/* CTA */}
+                  {isFree ? (
+                    <Button asChild variant="outline" size="lg" className="w-full">
                       <Link href={session ? `/${locale}/dashboard` : `/${locale}/auth/register`}>
-                        {plan.cta}
+                        {t(`plans.${planKey}.cta`)}
                       </Link>
                     </Button>
-                  ) : plan.id === "enterprise" ? (
-                    <Button asChild variant="outline" className="w-full" size="lg">
-                      <Link href={`/${locale}/contact`}>{plan.cta}</Link>
+                  ) : session && paypalId && selectedPlan !== planKey ? (
+                    <Button
+                      variant={plan.highlight ? "gradient" : "outline"}
+                      size="lg"
+                      className="w-full"
+                      onClick={() => setSelectedPlan(planKey)}
+                    >
+                      {t(`plans.${planKey}.cta`)}
                     </Button>
-                  ) : session && paypalId ? (
-                    <div>
-                      {selectedPlan !== plan.id ? (
-                        <Button
-                          variant="gradient"
-                          className="w-full"
-                          size="lg"
-                          onClick={() => setSelectedPlan(plan.id)}
-                        >
-                          {plan.cta}
-                        </Button>
-                      ) : (
-                        <div className="space-y-3">
-                          <PayPalScriptProvider
-                            options={{
-                              clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "test",
-                            }}
-                          >
-                            <PayPalButtons
-                              style={{ layout: "vertical", shape: "rect" }}
-                              createOrder={() => createOrder(paypalId)}
-                              onApprove={(data) => onApprove(paypalId, data)}
-                              onCancel={() => setSelectedPlan(null)}
-                            />
-                          </PayPalScriptProvider>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="w-full"
-                            onClick={() => setSelectedPlan(null)}
-                          >
-                            <X className="h-4 w-4 mr-1" /> Cancel
-                          </Button>
-                        </div>
-                      )}
+                  ) : session && paypalId && selectedPlan === planKey ? (
+                    <div className="space-y-2">
+                      <PayPalScriptProvider options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "test" }}>
+                        <PayPalButtons
+                          style={{ layout: "vertical", shape: "rect", height: 40 }}
+                          createOrder={() => createOrder(paypalId)}
+                          onApprove={(data) => onApprove(paypalId, data)}
+                          onCancel={() => setSelectedPlan(null)}
+                        />
+                      </PayPalScriptProvider>
+                      <Button variant="ghost" size="sm" className="w-full" onClick={() => setSelectedPlan(null)}>
+                        <X className="h-3.5 w-3.5 mr-1" /> Cancel
+                      </Button>
                     </div>
                   ) : (
                     <Button
                       asChild
-                      variant={plan.featured ? "gradient" : "outline"}
-                      className="w-full"
+                      variant={plan.highlight ? "gradient" : "outline"}
                       size="lg"
+                      className="w-full"
                     >
-                      <Link href={`/${locale}/auth/register`}>{plan.cta}</Link>
+                      <Link href={`/${locale}/auth/register`}>{t(`plans.${planKey}.cta`)}</Link>
                     </Button>
                   )}
                 </div>
@@ -302,15 +256,14 @@ export default function PricingPage() {
             })}
           </div>
 
-          {/* FAQ teaser */}
-          <div className="text-center mt-16 text-muted-foreground text-sm">
-            <p>
-              All plans include a 14-day money-back guarantee. Questions?{" "}
-              <Link href={`/${locale}/contact`} className="text-violet-600 hover:underline">
-                Contact us
-              </Link>
-            </p>
+          {/* Guarantee bar */}
+          <div className="mt-10 text-center">
+            <div className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 rounded-full px-5 py-2.5 border">
+              <Shield className="h-4 w-4 text-green-500 shrink-0" />
+              {t("guarantee")}
+            </div>
           </div>
+
         </div>
       </main>
 

@@ -91,6 +91,8 @@ function GenerateContent() {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
   const [limitReached, setLimitReached] = useState(false);
+  const [isLifetimeLimit, setIsLifetimeLimit] = useState(false);
+  const [remaining, setRemaining] = useState<number | null>(null);
 
   useEffect(() => {
     const type = searchParams.get("type") as ContentType;
@@ -123,7 +125,8 @@ function GenerateContent() {
 
       if (res.status === 429) {
         setLimitReached(true);
-        setError(t("limit_reached"));
+        setIsLifetimeLimit(data.isLifetime ?? false);
+        setError(data.isLifetime ? t("limit_reached_trial") : t("limit_reached_paid"));
         return;
       }
 
@@ -134,6 +137,9 @@ function GenerateContent() {
 
       setResult(data.content);
       setWordCount(data.wordCount || countWords(data.content));
+      if (data.remaining !== null && data.remaining !== undefined) {
+        setRemaining(data.remaining);
+      }
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -260,12 +266,19 @@ function GenerateContent() {
             )}
           </Button>
 
+          {/* Trial remaining counter */}
+          {remaining !== null && remaining > 0 && (
+            <div className="text-xs text-center text-muted-foreground bg-muted/50 rounded-lg px-3 py-2">
+              {t("trial_remaining", { count: remaining })}
+            </div>
+          )}
+
           {/* Limit Reached */}
           {limitReached && (
             <div className="p-4 rounded-xl bg-orange-50 border border-orange-200">
               <div className="flex gap-2 mb-2">
                 <AlertTriangle className="h-4 w-4 text-orange-500 shrink-0 mt-0.5" />
-                <p className="text-sm text-orange-700">{t("limit_reached")}</p>
+                <p className="text-sm text-orange-700">{error}</p>
               </div>
               <Button asChild variant="gradient" size="sm" className="w-full gap-1.5">
                 <Link href={`/${locale}/pricing`}>

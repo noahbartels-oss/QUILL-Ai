@@ -10,9 +10,9 @@
     "badge": "Powered by Claude AI",
     "headline": "Brillante Inhalte in Sekunden erstellen",
     "subheadline": "QUILL AI ist die All-in-One KI-Content-Plattform für Marketer, Autoren und Unternehmen. Erstellen Sie Blogbeiträge, Social-Media-Inhalte, E-Mails und mehr — in jeder Sprache.",
-    "cta_primary": "Kostenlos starten",
+    "cta_primary": "QUILL kostenlos testen",
     "cta_secondary": "So funktioniert es",
-    "no_credit_card": "Keine Kreditkarte erforderlich",
+    "no_credit_card": "5 kostenlose Generierungen · Keine Kreditkarte erforderlich",
     "trusted_by": "Von über 10.000 Creators weltweit vertraut"
   },
   "features": {
@@ -54,62 +54,94 @@
   },
   "pricing": {
     "badge": "Einfache, transparente Preise",
-    "headline": "Wählen Sie den Plan, der zu Ihnen passt",
-    "subheadline": "Starten Sie kostenlos, upgraden Sie wenn nötig. Keine versteckten Gebühren, jederzeit kündbar.",
+    "headline": "Pläne, die mit Ihnen wachsen",
+    "subheadline": "Starten Sie mit 5 kostenlosen Generierungen — keine Kreditkarte nötig. Upgrade ab €8/Monat.",
     "monthly": "Monatlich",
     "yearly": "Jährlich",
-    "save": "25% sparen",
+    "save_starter": "€29 sparen",
+    "save_pro": "€99 sparen",
+    "save_agency": "€319 sparen",
     "most_popular": "Am beliebtesten",
+    "best_value": "Bestes Preis-Leistungs-Verhältnis",
+    "per_month": "/Mo",
+    "per_year": "/Jahr",
+    "billed_yearly": "jährlich abgerechnet",
+    "or": "oder",
     "plans": {
-      "free": {
-        "name": "Kostenlos",
-        "price": "€0",
-        "period": "/Monat",
-        "description": "Perfekt für den Einstieg",
+      "trial": {
+        "name": "Trial",
+        "price_monthly": "€0",
+        "price_yearly": "€0",
+        "description": "QUILL AI ausprobieren — kein Risiko",
         "cta": "Kostenlos starten",
+        "badge": "",
         "features": [
-          "10 KI-Generierungen pro Monat",
-          "Bis zu 500 Wörter pro Generierung",
-          "4 Inhaltstypen",
+          "5 KI-Generierungen (lebenslang)",
+          "Bis zu 300 Wörter pro Generierung",
+          "3 Inhaltstypen",
           "Nur Englisch",
-          "Inhaltshistorie (7 Tage)"
-        ]
+          "Inhaltshistorie (3 Tage)"
+        ],
+        "limit_note": "5 insgesamt, dann upgraden"
+      },
+      "starter": {
+        "name": "Starter",
+        "price_monthly": "€9",
+        "price_yearly": "€79",
+        "description": "Für Blogger und Nebenprojekte",
+        "cta": "Starter holen",
+        "badge": "",
+        "features": [
+          "60 KI-Generierungen pro Monat",
+          "Bis zu 1.000 Wörter pro Generierung",
+          "5 Inhaltstypen",
+          "6 Sprachen",
+          "Inhaltshistorie (30 Tage)",
+          "E-Mail-Support"
+        ],
+        "limit_note": "60/Monat"
       },
       "pro": {
         "name": "Pro",
-        "price": "€18,99",
-        "period": "/Monat",
-        "description": "Für ernsthafte Content-Ersteller",
-        "cta": "Pro starten",
+        "price_monthly": "€29",
+        "price_yearly": "€249",
+        "description": "Für Marketer und Creator",
+        "cta": "Pro holen",
+        "badge": "Am beliebtesten",
         "features": [
-          "200 KI-Generierungen pro Monat",
-          "Bis zu 2.000 Wörter pro Generierung",
-          "Alle Inhaltstypen",
+          "500 KI-Generierungen pro Monat",
+          "Bis zu 3.000 Wörter pro Generierung",
+          "Alle 7 Inhaltstypen",
           "10+ Sprachen",
           "Unbegrenzte Inhaltshistorie",
           "Prioritäts-Support",
-          "Export als PDF & Word"
-        ]
+          "Erweiterter Ton-Kontrolle"
+        ],
+        "limit_note": "500/Monat"
       },
-      "enterprise": {
-        "name": "Enterprise",
-        "price": "€74,99",
-        "period": "/Monat",
+      "agency": {
+        "name": "Agentur",
+        "price_monthly": "€89",
+        "price_yearly": "€749",
         "description": "Für Teams und Agenturen",
-        "cta": "Vertrieb kontaktieren",
+        "cta": "Agentur holen",
+        "badge": "Bestes Preis-Leistungs-Verhältnis",
         "features": [
           "Unbegrenzte KI-Generierungen",
-          "Bis zu 5.000 Wörter pro Generierung",
-          "Alle Inhaltstypen",
+          "Bis zu 6.000 Wörter pro Generierung",
+          "Alle 7 Inhaltstypen",
           "10+ Sprachen",
           "Unbegrenzte Inhaltshistorie",
           "Dedizierter Support",
-          "Team-Zusammenarbeit",
-          "Benutzerdefiniertes KI-Training",
+          "3 Team-Sitze inklusive",
+          "Benutzerdefinierte Markenstimme",
           "API-Zugang"
-        ]
+        ],
+        "limit_note": "Unbegrenzt"
       }
-    }
+    },
+    "guarantee": "14-Tage Geld-zurück-Garantie · Jederzeit kündbar · Keine versteckten Gebühren",
+    "faq_link": "Fragen? Zur FAQ"
   },
   "testimonials": {
     "badge": "Von Creatoren geliebt",
@@ -226,8 +258,10 @@
       "saved": "Gespeichert!",
       "regenerate": "Neu generieren",
       "word_count": "{count} Wörter",
-      "limit_reached": "Sie haben Ihr monatliches Limit erreicht. Upgraden Sie auf Pro für mehr Generierungen.",
-      "upgrade_now": "Jetzt upgraden",
+      "trial_remaining": "Noch {count} kostenlose Generierung(en)",
+      "limit_reached_trial": "Sie haben alle 5 Trial-Generierungen verbraucht. Upgraden Sie auf Starter (€9/Mo) um fortzufahren.",
+      "limit_reached_paid": "Sie haben Ihr monatliches Limit erreicht. Upgraden Sie für mehr Generierungen.",
+      "upgrade_now": "Jetzt upgraden — ab €9/Mo",
       "types": {
         "BLOG_POST": "Blogbeitrag",
         "SOCIAL_MEDIA": "Social Media",
@@ -272,10 +306,13 @@
       "profile_save": "Änderungen speichern",
       "subscription": "Abonnement",
       "current_plan": "Aktueller Plan",
-      "plan_free": "Kostenloser Plan",
+      "plan_trial": "Trial",
+      "plan_starter": "Starter-Plan",
       "plan_pro": "Pro-Plan",
-      "plan_enterprise": "Enterprise-Plan",
+      "plan_agency": "Agentur-Plan",
       "upgrade": "Plan upgraden",
+      "upgrade_from_trial": "Sie nutzen den Trial — upgraden Sie um weiterzumachen",
+      "trial_remaining": "Noch {count} Generierung(en) im Trial",
       "cancel": "Abonnement kündigen",
       "billing_history": "Zahlungshistorie",
       "preferences": "Einstellungen",

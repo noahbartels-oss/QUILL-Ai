@@ -15,6 +15,7 @@ import {
   LogOut,
   Crown,
   LayoutDashboard,
+  Sparkles,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -22,8 +23,16 @@ interface SidebarProps {
   usage: {
     generationsUsed: number;
     generationsMax: number;
+    isLifetimeCap?: boolean;
   };
 }
+
+const PLAN_BADGES: Record<string, { label: string; color: string }> = {
+  TRIAL:   { label: "Trial",   color: "bg-muted text-muted-foreground" },
+  STARTER: { label: "Starter", color: "bg-blue-100 text-blue-700" },
+  PRO:     { label: "Pro",     color: "bg-violet-100 text-violet-700" },
+  AGENCY:  { label: "Agency",  color: "bg-amber-100 text-amber-700" },
+};
 
 export function Sidebar({ plan, usage }: SidebarProps) {
   const t = useTranslations("dashboard.nav");
@@ -31,27 +40,20 @@ export function Sidebar({ plan, usage }: SidebarProps) {
   const pathname = usePathname();
 
   const navItems = [
-    {
-      label: t("generate"),
-      href: `/${locale}/dashboard/generate`,
-      icon: Zap,
-    },
-    {
-      label: t("history"),
-      href: `/${locale}/dashboard/history`,
-      icon: History,
-    },
-    {
-      label: t("settings"),
-      href: `/${locale}/dashboard/settings`,
-      icon: Settings,
-    },
+    { label: t("generate"), href: `/${locale}/dashboard/generate`, icon: Zap },
+    { label: t("history"),  href: `/${locale}/dashboard/history`,  icon: History },
+    { label: t("settings"), href: `/${locale}/dashboard/settings`, icon: Settings },
   ];
 
-  const usagePercent = Math.min(
-    Math.round((usage.generationsUsed / usage.generationsMax) * 100),
-    100
-  );
+  const isTrial = plan === "TRIAL";
+  const isPaid  = !isTrial;
+  const planMeta = PLAN_BADGES[plan] ?? PLAN_BADGES.TRIAL;
+
+  const usagePercent = usage.generationsMax > 0
+    ? Math.min(Math.round((usage.generationsUsed / usage.generationsMax) * 100), 100)
+    : 0;
+
+  const remaining = usage.generationsMax - usage.generationsUsed;
 
   return (
     <aside className="w-64 flex-shrink-0 border-r bg-background flex flex-col h-screen sticky top-0">
@@ -101,16 +103,15 @@ export function Sidebar({ plan, usage }: SidebarProps) {
         })}
       </nav>
 
-      {/* Usage & Upgrade */}
-      <div className="p-4 border-t space-y-4">
-        {plan === "FREE" && (
+      {/* Usage & plan */}
+      <div className="p-4 border-t space-y-3">
+        {/* Trial upgrade prompt */}
+        {isTrial && (
           <div className="p-3 rounded-xl bg-gradient-to-br from-violet-50 to-indigo-50 border border-violet-100">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium text-muted-foreground">
-                Monthly Usage
-              </span>
+              <span className="text-xs font-semibold text-violet-700">Trial</span>
               <span className="text-xs font-bold text-violet-700">
-                {usage.generationsUsed}/{usage.generationsMax}
+                {remaining > 0 ? `${remaining} left` : "0 left"}
               </span>
             </div>
             <div className="w-full bg-white rounded-full h-1.5 mb-3">
@@ -121,20 +122,21 @@ export function Sidebar({ plan, usage }: SidebarProps) {
             </div>
             <Button asChild variant="gradient" size="sm" className="w-full gap-1.5">
               <Link href={`/${locale}/pricing`}>
-                <Crown className="h-3.5 w-3.5" />
-                {t("upgrade")}
+                <Sparkles className="h-3.5 w-3.5" />
+                {t("upgrade")} · from $9/mo
               </Link>
             </Button>
           </div>
         )}
 
-        {plan !== "FREE" && (
-          <div className="flex items-center gap-2 px-3 py-2">
-            <Crown className="h-4 w-4 text-yellow-500" />
-            <span className="text-sm font-medium">{plan} Plan</span>
-            <Badge variant="gradient" className="ml-auto text-xs py-0">
+        {/* Paid plan badge */}
+        {isPaid && (
+          <div className="flex items-center gap-2 px-3 py-2 rounded-lg border bg-muted/30">
+            <Crown className="h-4 w-4 text-yellow-500 shrink-0" />
+            <span className="text-sm font-medium flex-1">{planMeta.label} Plan</span>
+            <span className={cn("text-xs rounded-full px-2 py-0.5 font-semibold", planMeta.color)}>
               Active
-            </Badge>
+            </span>
           </div>
         )}
 

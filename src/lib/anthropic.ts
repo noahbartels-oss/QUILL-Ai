@@ -4,11 +4,46 @@ export const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
+// TRIAL: 5 lifetime generations (no monthly reset), strict limits to push conversion
+// STARTER: Entry-level paid plan at $9/mo — impulse-buy price point
+// PRO: Main revenue plan at $29/mo — strong value vs Starter
+// AGENCY: High-ticket anchor at $89/mo — makes Pro look affordable
 export const PLAN_LIMITS = {
-  FREE: { generationsPerMonth: 10, maxWords: 500, maxTokens: 800 },
-  PRO: { generationsPerMonth: 200, maxWords: 2000, maxTokens: 3000 },
-  ENTERPRISE: { generationsPerMonth: 999999, maxWords: 5000, maxTokens: 8000 },
+  TRIAL: {
+    generationsPerMonth: 5,      // lifetime cap, not monthly
+    maxWords: 300,
+    maxTokens: 500,
+    isLifetimeCap: true,         // no monthly reset
+    languages: ["en"],           // English only
+    contentTypes: 3,             // limited types
+  },
+  STARTER: {
+    generationsPerMonth: 60,
+    maxWords: 1000,
+    maxTokens: 1500,
+    isLifetimeCap: false,
+    languages: ["en", "de", "es", "fr", "it", "pt"],
+    contentTypes: 5,
+  },
+  PRO: {
+    generationsPerMonth: 500,
+    maxWords: 3000,
+    maxTokens: 4500,
+    isLifetimeCap: false,
+    languages: "all",
+    contentTypes: 7,
+  },
+  AGENCY: {
+    generationsPerMonth: 999999,
+    maxWords: 6000,
+    maxTokens: 9000,
+    isLifetimeCap: false,
+    languages: "all",
+    contentTypes: 7,
+  },
 };
+
+export type PlanKey = keyof typeof PLAN_LIMITS;
 
 export type ContentTypeKey =
   | "BLOG_POST"

@@ -94,11 +94,10 @@ export default function SettingsPage() {
   }
 
   const planLabel =
-    usage?.plan === "FREE"
-      ? t("plan_free")
-      : usage?.plan === "PRO"
-        ? t("plan_pro")
-        : t("plan_enterprise");
+    usage?.plan === "TRIAL"   ? t("plan_trial")   :
+    usage?.plan === "STARTER" ? t("plan_starter") :
+    usage?.plan === "PRO"     ? t("plan_pro")     :
+    usage?.plan === "AGENCY"  ? t("plan_agency")  : t("plan_trial");
 
   return (
     <div className="p-6 md:p-8 max-w-2xl mx-auto">
@@ -183,7 +182,7 @@ export default function SettingsPage() {
               )}
             </div>
 
-            {usage?.plan === "FREE" ? (
+            {usage?.plan === "TRIAL" || usage?.plan === "STARTER" ? (
               <Button asChild variant="gradient" size="sm" className="gap-1.5">
                 <Link href={`/${locale}/pricing`}>
                   <Crown className="h-3.5 w-3.5" />

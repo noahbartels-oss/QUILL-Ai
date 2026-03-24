@@ -3,30 +3,65 @@ const PAYPAL_API_BASE =
     ? "https://api-m.paypal.com"
     : "https://api-m.sandbox.paypal.com";
 
+// Revenue-optimized pricing:
+// Starter $9/mo — impulse-buy price point, 3-5x conversion vs $19
+// Pro $29/mo — main revenue plan, strong value vs Starter
+// Agency $89/mo — anchor plan, makes Pro look affordable
+// Yearly discounts ~28-30% to lock in LTV and reduce churn
 export const PAYPAL_PLANS = {
+  STARTER_MONTHLY: {
+    id: "STARTER_MONTHLY",
+    name: "QUILL Starter Monthly",
+    price: "9.00",
+    currency: "USD",
+    interval: "MONTH",
+    plan: "STARTER",
+    description: "60 AI generations/month, up to 1,000 words each",
+  },
+  STARTER_YEARLY: {
+    id: "STARTER_YEARLY",
+    name: "QUILL Starter Yearly",
+    price: "79.00",
+    currency: "USD",
+    interval: "YEAR",
+    plan: "STARTER",
+    description: "60 AI generations/month, up to 1,000 words each — save $29",
+  },
   PRO_MONTHLY: {
     id: "PRO_MONTHLY",
     name: "QUILL Pro Monthly",
-    price: "19.99",
+    price: "29.00",
     currency: "USD",
     interval: "MONTH",
-    description: "200 AI generations per month, up to 2000 words each",
+    plan: "PRO",
+    description: "500 AI generations/month, up to 3,000 words each",
   },
   PRO_YEARLY: {
     id: "PRO_YEARLY",
     name: "QUILL Pro Yearly",
-    price: "179.99",
+    price: "249.00",
     currency: "USD",
     interval: "YEAR",
-    description: "200 AI generations per month, up to 2000 words each",
+    plan: "PRO",
+    description: "500 AI generations/month, up to 3,000 words each — save $99",
   },
-  ENTERPRISE_MONTHLY: {
-    id: "ENTERPRISE_MONTHLY",
-    name: "QUILL Enterprise Monthly",
-    price: "79.99",
+  AGENCY_MONTHLY: {
+    id: "AGENCY_MONTHLY",
+    name: "QUILL Agency Monthly",
+    price: "89.00",
     currency: "USD",
     interval: "MONTH",
-    description: "Unlimited AI generations, up to 5000 words each",
+    plan: "AGENCY",
+    description: "Unlimited generations, up to 6,000 words each",
+  },
+  AGENCY_YEARLY: {
+    id: "AGENCY_YEARLY",
+    name: "QUILL Agency Yearly",
+    price: "749.00",
+    currency: "USD",
+    interval: "YEAR",
+    plan: "AGENCY",
+    description: "Unlimited generations, up to 6,000 words each — save $319",
   },
 };
 
@@ -64,7 +99,7 @@ export async function createPayPalOrder(amount: string, currency = "USD") {
             currency_code: currency,
             value: amount,
           },
-          description: "QUILL AI Pro Subscription",
+          description: "QUILL AI Subscription",
         },
       ],
       application_context: {

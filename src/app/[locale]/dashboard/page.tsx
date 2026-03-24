@@ -53,7 +53,7 @@ export default async function DashboardPage({
 
   if (!user) redirect(`/${locale}/auth/login`);
 
-  const plan = user.plan as "FREE" | "PRO" | "ENTERPRISE";
+  const plan = user.plan as "TRIAL" | "STARTER" | "PRO" | "AGENCY";
   const limits = PLAN_LIMITS[plan];
   const used = user.usage?.generationsUsed ?? 0;
   const max = limits.generationsPerMonth;
@@ -188,11 +188,11 @@ export default async function DashboardPage({
               </div>
               <Progress value={max === 999999 ? 5 : usagePercent} />
             </div>
-            {plan === "FREE" && (
+            {plan === "TRIAL" && (
               <Button asChild variant="gradient" size="sm" className="w-full mt-3 gap-1.5">
                 <Link href={`/${locale}/pricing`}>
                   <Crown className="h-3.5 w-3.5" />
-                  Upgrade to Pro
+                  Upgrade · from $9/mo
                 </Link>
               </Button>
             )}

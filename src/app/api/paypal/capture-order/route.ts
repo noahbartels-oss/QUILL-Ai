@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { capturePayPalOrder } from "@/lib/paypal";
+import { capturePayPalOrder, PAYPAL_PLANS } from "@/lib/paypal";
 import { PLAN_LIMITS } from "@/lib/anthropic";
 
 export async function POST(req: NextRequest) {
@@ -19,8 +19,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Payment not completed" }, { status: 400 });
     }
 
-    // Determine new plan based on planId
-    const newPlan = planId?.includes("ENTERPRISE") ? "ENTERPRISE" : "PRO";
+    const paypalPlan = PAYPAL_PLANS[planId as keyof typeof PAYPAL_PLANS];
+    if (!paypalPlan) {
+      return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
+    }
+
+    const newPlan = paypalPlan.plan as "STARTER" | "PRO" | "AGENCY";
     const limits = PLAN_LIMITS[newPlan];
 
     const periodEnd = new Date();
@@ -30,7 +34,6 @@ export async function POST(req: NextRequest) {
       periodEnd.setMonth(periodEnd.getMonth() + 1);
     }
 
-    // Update user plan and create subscription record
     await prisma.$transaction([
       prisma.user.update({
         where: { id: session.user.id },
@@ -65,6 +68,7 @@ export async function POST(req: NextRequest) {
         },
         update: {
           generationsMax: limits.generationsPerMonth,
+          generationsUsed: 0, // reset on upgrade
         },
       }),
     ]);

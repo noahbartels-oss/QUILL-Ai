@@ -27,12 +27,13 @@ export default async function DashboardLayout({
     redirect(`/${locale}/auth/login`);
   }
 
-  const plan = user.plan as "FREE" | "PRO" | "ENTERPRISE";
+  const plan = user.plan as "TRIAL" | "STARTER" | "PRO" | "AGENCY";
   const limits = PLAN_LIMITS[plan];
 
   const usage = {
     generationsUsed: user.usage?.generationsUsed ?? 0,
     generationsMax: limits.generationsPerMonth,
+    isLifetimeCap: limits.isLifetimeCap,
   };
 
   return (

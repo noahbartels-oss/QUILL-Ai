@@ -10,9 +10,9 @@
     "badge": "Propulsé par Claude AI",
     "headline": "Créez du contenu brillant en quelques secondes",
     "subheadline": "QUILL AI est la plateforme de contenu IA tout-en-un pour les marketeurs, les écrivains et les entreprises. Générez des articles de blog, du contenu pour les réseaux sociaux, des emails et plus encore — dans n'importe quelle langue.",
-    "cta_primary": "Commencer gratuitement",
+    "cta_primary": "Essayer QUILL gratuitement",
     "cta_secondary": "Voir comment ça marche",
-    "no_credit_card": "Aucune carte de crédit requise",
+    "no_credit_card": "5 générations gratuites · Sans carte de crédit",
     "trusted_by": "Approuvé par plus de 10 000 créateurs dans le monde"
   },
   "features": {
@@ -54,62 +54,94 @@
   },
   "pricing": {
     "badge": "Tarifs simples et transparents",
-    "headline": "Choisissez le plan qui correspond à vos besoins",
-    "subheadline": "Commencez gratuitement, passez à un niveau supérieur si nécessaire. Sans frais cachés, annulez à tout moment.",
+    "headline": "Des plans qui grandissent avec vous",
+    "subheadline": "Commencez avec 5 générations gratuites — sans carte. Passez à 9€/mois pour débloquer tout le potentiel.",
     "monthly": "Mensuel",
     "yearly": "Annuel",
-    "save": "Économisez 25%",
+    "save_starter": "Économisez 29€",
+    "save_pro": "Économisez 99€",
+    "save_agency": "Économisez 319€",
     "most_popular": "Le Plus Populaire",
+    "best_value": "Meilleur Rapport Qualité-Prix",
+    "per_month": "/mois",
+    "per_year": "/an",
+    "billed_yearly": "facturé annuellement",
+    "or": "ou",
     "plans": {
-      "free": {
-        "name": "Gratuit",
-        "price": "0€",
-        "period": "/mois",
-        "description": "Parfait pour démarrer",
+      "trial": {
+        "name": "Trial",
+        "price_monthly": "0€",
+        "price_yearly": "0€",
+        "description": "Essayez QUILL AI sans engagement",
         "cta": "Commencer gratuitement",
+        "badge": "",
         "features": [
-          "10 générations IA par mois",
-          "Jusqu'à 500 mots par génération",
-          "4 types de contenu",
+          "5 générations IA (à vie)",
+          "Jusqu'à 300 mots par génération",
+          "3 types de contenu",
           "Anglais uniquement",
-          "Historique de contenu (7 jours)"
-        ]
+          "Historique de contenu (3 jours)"
+        ],
+        "limit_note": "5 au total, puis passer à un plan payant"
+      },
+      "starter": {
+        "name": "Starter",
+        "price_monthly": "9€",
+        "price_yearly": "79€",
+        "description": "Pour les blogueurs et projets personnels",
+        "cta": "Obtenir Starter",
+        "badge": "",
+        "features": [
+          "60 générations IA par mois",
+          "Jusqu'à 1 000 mots par génération",
+          "5 types de contenu",
+          "6 langues",
+          "Historique de contenu (30 jours)",
+          "Support par email"
+        ],
+        "limit_note": "60/mois"
       },
       "pro": {
         "name": "Pro",
-        "price": "19,99€",
-        "period": "/mois",
-        "description": "Pour les créateurs de contenu sérieux",
-        "cta": "Démarrer Pro",
+        "price_monthly": "29€",
+        "price_yearly": "249€",
+        "description": "Pour les marketeurs et créateurs",
+        "cta": "Obtenir Pro",
+        "badge": "Le Plus Populaire",
         "features": [
-          "200 générations IA par mois",
-          "Jusqu'à 2 000 mots par génération",
-          "Tous les types de contenu",
+          "500 générations IA par mois",
+          "Jusqu'à 3 000 mots par génération",
+          "Les 7 types de contenu",
           "10+ langues",
-          "Historique de contenu illimité",
+          "Historique illimité",
           "Support prioritaire",
-          "Export en PDF et Word"
-        ]
+          "Contrôle avancé du ton"
+        ],
+        "limit_note": "500/mois"
       },
-      "enterprise": {
-        "name": "Enterprise",
-        "price": "79,99€",
-        "period": "/mois",
+      "agency": {
+        "name": "Agence",
+        "price_monthly": "89€",
+        "price_yearly": "749€",
         "description": "Pour les équipes et agences",
-        "cta": "Contacter les ventes",
+        "cta": "Obtenir Agence",
+        "badge": "Meilleur Rapport Qualité-Prix",
         "features": [
-          "Générations IA illimitées",
-          "Jusqu'à 5 000 mots par génération",
-          "Tous les types de contenu",
+          "Générations illimitées",
+          "Jusqu'à 6 000 mots par génération",
+          "Les 7 types de contenu",
           "10+ langues",
-          "Historique de contenu illimité",
+          "Historique illimité",
           "Support dédié",
-          "Collaboration en équipe",
-          "Formation IA personnalisée",
+          "3 sièges d'équipe inclus",
+          "Voix de marque personnalisée",
           "Accès API"
-        ]
+        ],
+        "limit_note": "Illimité"
       }
-    }
+    },
+    "guarantee": "Garantie satisfait ou remboursé 14 jours · Annulez à tout moment · Sans frais cachés",
+    "faq_link": "Des questions ? Voir la FAQ"
   },
   "testimonials": {
     "badge": "Adoré par les créateurs",
@@ -226,8 +258,10 @@
       "saved": "Sauvegardé!",
       "regenerate": "Régénérer",
       "word_count": "{count} mots",
-      "limit_reached": "Vous avez atteint votre limite mensuelle. Passez à Pro pour plus de générations.",
-      "upgrade_now": "Mettre à niveau maintenant",
+      "trial_remaining": "{count} génération(s) gratuite(s) restante(s)",
+      "limit_reached_trial": "Vous avez utilisé vos 5 générations d'essai. Passez à Starter (9€/mois) pour continuer.",
+      "limit_reached_paid": "Vous avez atteint votre limite mensuelle. Passez à un plan supérieur.",
+      "upgrade_now": "Mettre à niveau — à partir de 9€/mois",
       "types": {
         "BLOG_POST": "Article de Blog",
         "SOCIAL_MEDIA": "Réseaux Sociaux",
@@ -272,10 +306,13 @@
       "profile_save": "Sauvegarder les modifications",
       "subscription": "Abonnement",
       "current_plan": "Plan actuel",
-      "plan_free": "Plan Gratuit",
+      "plan_trial": "Trial",
+      "plan_starter": "Plan Starter",
       "plan_pro": "Plan Pro",
-      "plan_enterprise": "Plan Enterprise",
+      "plan_agency": "Plan Agence",
       "upgrade": "Mettre à niveau le plan",
+      "upgrade_from_trial": "Vous êtes en Trial — passez à un plan payant pour continuer",
+      "trial_remaining": "{count} génération(s) restante(s) dans votre trial",
       "cancel": "Annuler l'abonnement",
       "billing_history": "Historique de facturation",
       "preferences": "Préférences",
