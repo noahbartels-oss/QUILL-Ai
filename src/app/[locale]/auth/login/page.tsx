@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { loginAction } from "@/lib/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -28,12 +29,18 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    const result = await signIn("credentials", { email, password, redirect: false });
-    if (result?.error) {
+    try {
+      const result = await loginAction(email, password);
+      if (result.error) {
+        setError(t("error"));
+        setLoading(false);
+      } else {
+        router.push(`/${locale}/dashboard`);
+        router.refresh();
+      }
+    } catch {
       setError(t("error"));
       setLoading(false);
-    } else {
-      router.push(`/${locale}/dashboard`);
     }
   }
 
