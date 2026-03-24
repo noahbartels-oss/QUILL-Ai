@@ -167,7 +167,7 @@ export default function SettingsPage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold">{planLabel}</span>
-                {usage?.plan !== "FREE" && (
+                {usage?.plan !== "TRIAL" && (
                   <Badge variant="gradient" className="text-xs py-0 gap-1">
                     <Crown className="h-3 w-3" />
                     Active

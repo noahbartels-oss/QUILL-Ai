@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { PLAN_LIMITS } from "@/lib/anthropic";
+import { PLAN_LIMITS, PlanKey } from "@/lib/anthropic";
 
 export async function GET() {
   try {
@@ -19,7 +19,7 @@ export async function GET() {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    const plan = user.plan as "FREE" | "PRO" | "ENTERPRISE";
+    const plan = (user.plan as PlanKey) in PLAN_LIMITS ? (user.plan as PlanKey) : "TRIAL";
     const limits = PLAN_LIMITS[plan];
 
     return NextResponse.json({

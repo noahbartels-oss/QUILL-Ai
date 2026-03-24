@@ -173,7 +173,7 @@ export default async function DashboardPage({
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-sm font-semibold">{t("home.usage_title")}</h3>
               <Badge
-                variant={plan === "FREE" ? "secondary" : "gradient"}
+                variant={plan === "TRIAL" ? "secondary" : "gradient"}
                 className="text-xs"
               >
                 {plan}
