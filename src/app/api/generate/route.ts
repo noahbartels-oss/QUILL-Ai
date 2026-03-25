@@ -110,6 +110,7 @@ export async function POST(req: NextRequest) {
       language,
       additionalContext,
       maxTokens: limits.maxTokens,
+      plan,
     });
 
     const wordCount = countWords(content);

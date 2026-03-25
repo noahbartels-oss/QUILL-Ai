@@ -62,6 +62,7 @@ export default function PricingPage() {
   const [billing, setBilling] = useState<"monthly" | "yearly">("yearly");
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
 
   const saveLabels: Record<string, string> = {
     starter: t("save_starter"),
@@ -70,16 +71,24 @@ export default function PricingPage() {
   };
 
   async function createOrder(planId: string) {
+    setPaymentError(null);
     const res = await fetch("/api/paypal/create-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ planId }),
     });
     const data = await res.json();
+    if (!res.ok || !data.orderId) {
+      const msg = data.error ?? "Failed to create order. Check your PayPal configuration.";
+      setPaymentError(msg);
+      setSelectedPlan(null);
+      throw new Error(msg);
+    }
     return data.orderId;
   }
 
   async function onApprove(planId: string, data: { orderID: string }) {
+    setPaymentError(null);
     const res = await fetch("/api/paypal/capture-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -89,6 +98,9 @@ export default function PricingPage() {
     if (result.success) {
       setPaymentSuccess(true);
       setTimeout(() => router.push(`/${locale}/dashboard`), 2000);
+    } else {
+      setPaymentError(result.error ?? "Payment capture failed. Please try again.");
+      setSelectedPlan(null);
     }
   }
 
@@ -134,6 +146,12 @@ export default function PricingPage() {
           {paymentSuccess && (
             <div className="max-w-md mx-auto mb-8 p-4 rounded-xl bg-green-50 border border-green-200 text-center text-green-700 font-medium">
               Payment successful! Redirecting to dashboard…
+            </div>
+          )}
+
+          {paymentError && (
+            <div className="max-w-lg mx-auto mb-8 p-4 rounded-xl bg-red-50 border border-red-200 text-center text-red-700 text-sm">
+              <strong>Payment error:</strong> {paymentError}
             </div>
           )}
 
@@ -229,12 +247,21 @@ export default function PricingPage() {
                     </Button>
                   ) : session && paypalId && selectedPlan === planKey ? (
                     <div className="space-y-2">
-                      <PayPalScriptProvider options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "test" }}>
+                      <PayPalScriptProvider options={{
+                        clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "test",
+                        components: "buttons",
+                        currency: "USD",
+                      }}>
                         <PayPalButtons
                           style={{ layout: "vertical", shape: "rect", height: 40 }}
                           createOrder={() => createOrder(paypalId)}
                           onApprove={(data) => onApprove(paypalId, data)}
                           onCancel={() => setSelectedPlan(null)}
+                          onError={(err) => {
+                            setPaymentError("PayPal encountered an error. Make sure NEXT_PUBLIC_PAYPAL_CLIENT_ID is set correctly on Vercel.");
+                            setSelectedPlan(null);
+                            console.error("PayPal error:", err);
+                          }}
                         />
                       </PayPalScriptProvider>
                       <Button variant="ghost" size="sm" className="w-full" onClick={() => setSelectedPlan(null)}>

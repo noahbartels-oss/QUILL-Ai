@@ -1,7 +1,11 @@
+// Use sandbox by default. Set PAYPAL_LIVE_MODE=true in Vercel env vars only
+// when you have approved live PayPal credentials.
 const PAYPAL_API_BASE =
-  process.env.NODE_ENV === "production"
+  process.env.PAYPAL_LIVE_MODE === "true"
     ? "https://api-m.paypal.com"
     : "https://api-m.sandbox.paypal.com";
+
+export const PAYPAL_MODE = process.env.PAYPAL_LIVE_MODE === "true" ? "live" : "sandbox";
 
 // Revenue-optimized pricing:
 // Starter $9/mo — impulse-buy price point, 3-5x conversion vs $19
@@ -66,8 +70,12 @@ export const PAYPAL_PLANS = {
 };
 
 async function getPayPalAccessToken(): Promise<string> {
-  const clientId = process.env.PAYPAL_CLIENT_ID!;
-  const clientSecret = process.env.PAYPAL_CLIENT_SECRET!;
+  const clientId = process.env.PAYPAL_CLIENT_ID;
+  const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
+
+  if (!clientId || !clientSecret || clientId === "your-paypal-client-id") {
+    throw new Error("PayPal credentials not configured. Set PAYPAL_CLIENT_ID and PAYPAL_CLIENT_SECRET.");
+  }
 
   const response = await fetch(`${PAYPAL_API_BASE}/v1/oauth2/token`, {
     method: "POST",
@@ -78,12 +86,21 @@ async function getPayPalAccessToken(): Promise<string> {
     body: "grant_type=client_credentials",
   });
 
+  if (!response.ok) {
+    throw new Error(`PayPal auth failed: ${response.status}`);
+  }
+
   const data = await response.json();
+  if (!data.access_token) {
+    throw new Error("PayPal returned no access token — check your credentials.");
+  }
   return data.access_token;
 }
 
 export async function createPayPalOrder(amount: string, currency = "USD") {
   const accessToken = await getPayPalAccessToken();
+
+  const baseUrl = process.env.AUTH_URL ?? process.env.NEXTAUTH_URL ?? "http://localhost:3000";
 
   const response = await fetch(`${PAYPAL_API_BASE}/v2/checkout/orders`, {
     method: "POST",
@@ -103,8 +120,8 @@ export async function createPayPalOrder(amount: string, currency = "USD") {
         },
       ],
       application_context: {
-        return_url: `${process.env.NEXTAUTH_URL}/dashboard/settings?payment=success`,
-        cancel_url: `${process.env.NEXTAUTH_URL}/pricing?payment=cancelled`,
+        return_url: `${baseUrl}/dashboard/settings?payment=success`,
+        cancel_url: `${baseUrl}/pricing?payment=cancelled`,
         brand_name: "QUILL AI",
         user_action: "PAY_NOW",
       },
